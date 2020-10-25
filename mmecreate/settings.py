@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 from dotenv import load_dotenv
 from pathlib import Path
+import os
 
 load_dotenv()
 
@@ -78,8 +79,12 @@ WSGI_APPLICATION = 'mmecreate.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mmestore',
+        'USER': 'mmestore',
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': '167.71.104.42',
+        'PORT': '5432',
     }
 }
 
@@ -108,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Indiana/Indianapolis'
 
 USE_I18N = True
 
