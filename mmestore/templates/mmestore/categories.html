@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Mme's Creations Categories{%  endblock %}
+
+{% block content %}
+
+    {% if category_list %}
+
+        <ul>
+
+        {% for category in category_list %}
+            <li><a href="category/{{ category.pk }}">
+                {{ category.cat_name }}</a></li>
+        {% endfor %}
+
+        </ul>
+    {%  else %}
+        <p>No categories are currently in the database.</p>
+
+    {% endif %}
+
+
+
+{% endblock %}
+
