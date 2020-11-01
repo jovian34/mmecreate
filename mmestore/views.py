@@ -1,27 +1,23 @@
-from django.http import HttpResponse
-from django.template import loader
+from django.shortcuts import get_object_or_404, render
 
 from .models import Category
 
 
 def index(request):
-    template = loader.get_template('mmestore/index.html')
-    return HttpResponse(template.render(request))
+    return render(request, 'mmestore/index.html')
 
 
 def categories(request):
     category_list = Category.objects.order_by('item_range_min')
-    template = loader.get_template('mmestore/categories.html')
     context = {
         'category_list': category_list,
     }
-    return HttpResponse(template.render(context, request))
+    return render(request, 'mmestore/categories.html', context)
 
 
 def category(request, category_id):
-    category_item = Category.objects.get(pk=category_id)
-    template = loader.get_template('mmestore/category.html')
+    category_item = get_object_or_404(Category, pk=category_id)
     context = {
         'category_name': category_item.cat_name,
     }
-    return HttpResponse(template.render(context, request))
+    return render(request, 'mmestore/category.html', context)

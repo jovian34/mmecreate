@@ -3,13 +3,14 @@
 {% block title %}Mme's Creations Categories{%  endblock %}
 
 {% block content %}
+    <h1>View by Category:</h1>
 
     {% if category_list %}
 
         <ul>
 
         {% for category in category_list %}
-            <li><a href="category/{{ category.pk }}">
+            <li><a href="{% url 'category' category.pk %}">
                 {{ category.cat_name }}</a></li>
         {% endfor %}
 

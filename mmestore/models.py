@@ -18,7 +18,6 @@ class CraftItem(models.Model):
     price = models.FloatField()
     has_it_been_sold = models.BooleanField()
     item_number = models.IntegerField(unique=True)
-    length = models.FloatField()
     width = models.FloatField()
     height = models.FloatField()
     depth = models.FloatField()

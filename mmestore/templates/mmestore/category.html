@@ -3,8 +3,38 @@
 {% block title %}Mme's Creations: {{ category_name }} {%  endblock %}
 
 {% block content %}
-<h1>{{ category_name }}</h1>
+<h1>Category: {{ category_name }}</h1>
+
+    {% if items %}
+
+        <table>
+
+        {% for item in items %}
+          <tr>
+            <td>
+                <img src="{{ item.photo_front }}">
+            </td>
+            <td>
+                <img src="{{ item.photo_back }}">
+            </td>
+            <td>
+                <p>{{ item.description }}</p>
+            </td>
+            <td>
+                <p>${{ item.price }}</p>
+            </td>
+            <td>
+                <p>{{ item.width }} X {{ item.height }} X {{ item.depth }}</p>
+            </td>
+          </tr>
 
 
+        {% endfor %}
+
+        </table>
+    {%  else %}
+        <h3>No {{ category_name.lower }} items are currently listed in the database.</h3>
+
+    {% endif %}
 {% endblock %}
 
