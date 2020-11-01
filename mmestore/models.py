@@ -12,6 +12,7 @@ class Category(models.Model):
 
 class CraftItem(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    item_number = models.CharField(unique=True, max_length=16)
     description = models.CharField(default=None, blank=True, null=True, max_length=200)
     photo_front = models.URLField(default=None, blank=True, null=True, max_length=200)
     photo_front_width = models.IntegerField(default=None, blank=True, null=True)
@@ -21,7 +22,6 @@ class CraftItem(models.Model):
     photo_back_height = models.IntegerField(default=None, blank=True, null=True)
     price = models.FloatField(default=None, blank=True, null=True)
     has_it_been_sold = models.BooleanField(default=False)
-    item_number = models.IntegerField(unique=True)
     width = models.FloatField(default=None, blank=True, null=True)
     height = models.FloatField(default=None, blank=True, null=True)
     depth = models.FloatField(default=None, blank=True, null=True)

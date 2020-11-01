@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load my_templatetag %}
 
 {% block title %}Mme's Creations: {{ category_name }} {%  endblock %}
 
@@ -13,7 +12,7 @@
         {% for item in items %}
           <tr>
             <td>
-                <a href="{% url 'craft_item'  item.item_number|leading_zero_item_number %}">
+                <a href="{% url 'craft_item'  item.item_number %}">
                 <img src="{{ item.photo_front }}" width="{{ item.photo_front_width }}" height="{{ item.photo_front_height }}"
                 alt="{{ item.description }}">
                 </a>
@@ -22,7 +21,7 @@
                 <p>{{ item.description }}</p>
             </td>
             <td>
-                <p>${{ item.price }}</p>
+                <p>${{ item.price|floatformat:2 }}</p>
             </td>
           </tr>
 

@@ -1,36 +1,39 @@
 {% extends "base.html" %}
-{% load my_templatetag %}
 
 {% block title %}Mme's Creations: {{ category_name }} - {{ item.description }} {%  endblock %}
 
 {% block content %}
 
-<h1>{{ category_name }}: {{ item.item_number|leading_zero_item_number }} - {{ item.description }}</h1>
+<h1>{{ category_name }}: {{ item.item_number }} - {{ item.description }}</h1>
 
     {% if item.photo_front %}
-    <img src="{{ item.photo_front }}" width="{{ item.photo_front_width }}" height="{{ item.photo_front_height }}">
+    <img src="{{ item.photo_front }}" width="{{ item.photo_front_width }}" height="{{ item.photo_front_height }}"
+    alt="{{ item.description }}">
     {% endif %}
     <br>
 
     {% if item.photo_back %}
-    <img src="{{ item.photo_back }}" width="{{ item.photo_back_width }}" height="{{ item.photo_back_height }}">
+    <img src="{{ item.photo_back }}" width="{{ item.photo_back_width }}" height="{{ item.photo_back_height }}"
+    alt="{{ item.description }}">
     {% endif %}
 
     <h3>Price: ${{ item.price|floatformat:2 }}</h3>
 
     <ul>
         {% if item.width %}
-        <li><h4>Width: {{ item.width }} inches</h4></li>
+        <li><h4>Width: {{ item.width }}"</h4></li>
         {% endif %}
 
         {% if item.height %}
-        <li><h4>Height: {{ item.height }}</h4></li>
+        <li><h4>Height: {{ item.height }}"</h4></li>
         {% endif %}
 
         {% if item.depth %}
-        <li><h4>Depth: {{ item.depth }}</h4></li>
+        <li><h4>Depth: {{ item.depth }}"</h4></li>
         {% endif %}
     </ul>
+
+    <h2><a href="">Buy Now!</a> </h2>
 
 {% endblock %}
 
