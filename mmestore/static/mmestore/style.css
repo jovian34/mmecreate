@@ -1,0 +1,29 @@
+
+
+body    {
+    font-family: 'Catamaran', sans-serif;
+    margin: 5%;
+}
+
+.content {
+    background-color: lightgrey;
+    padding: 5%;
+}
+
+#mme-banner {
+    horiz-align: center;
+}
+
+a {
+    color: deeppink;
+}
+
+.res-table {
+    overflow-x: auto;
+}
+
+
+td {
+    border: 1px solid darkolivegreen;
+    margin-inside: 5%;
+}

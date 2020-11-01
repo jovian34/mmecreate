@@ -7,6 +7,7 @@
 
     {% if items %}
 
+        <div class="res-table">
         <table>
 
         {% for item in items %}
@@ -29,6 +30,7 @@
         {% endfor %}
 
         </table>
+        </div>
     {%  else %}
         <h3>No {{ category_name.lower }} items are currently listed in the database.</h3>
 

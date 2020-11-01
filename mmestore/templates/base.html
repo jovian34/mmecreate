@@ -4,15 +4,17 @@
   <head>
     <meta charset="utf-8">
     <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'mmestore/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Catamaran&display=swap" rel="stylesheet">
   </head>
   <body>
 
     <a href="{% url 'index' %}">
     <img src="https://live.staticflickr.com/65535/50551539093_1a1b2b8384_w.jpg"
-         width="400" height="137" alt="Mme's Creations"></a>
+         width="400" height="137" alt="Mme's Creations" id="mme-banner"></a>
 
+    <div class="content">{% block content %}{% endblock %}</div>
 
-    {% block content %}{% endblock %}
   </body>
 
 <footer>
