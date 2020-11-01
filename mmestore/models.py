@@ -12,15 +12,19 @@ class Category(models.Model):
 
 class CraftItem(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    description = models.CharField(max_length=200)
-    photo_front = models.URLField(max_length=200)
-    photo_back = models.URLField(max_length=200)
-    price = models.FloatField()
-    has_it_been_sold = models.BooleanField()
+    description = models.CharField(default=None, blank=True, null=True, max_length=200)
+    photo_front = models.URLField(default=None, blank=True, null=True, max_length=200)
+    photo_front_width = models.IntegerField(default=None, blank=True, null=True)
+    photo_front_height = models.IntegerField(default=None, blank=True, null=True)
+    photo_back = models.URLField(default=None, blank=True, null=True, max_length=200)
+    photo_back_width = models.IntegerField(default=None, blank=True, null=True)
+    photo_back_height = models.IntegerField(default=None, blank=True, null=True)
+    price = models.FloatField(default=None, blank=True, null=True)
+    has_it_been_sold = models.BooleanField(default=False)
     item_number = models.IntegerField(unique=True)
-    width = models.FloatField()
-    height = models.FloatField()
-    depth = models.FloatField()
+    width = models.FloatField(default=None, blank=True, null=True)
+    height = models.FloatField(default=None, blank=True, null=True)
+    depth = models.FloatField(default=None, blank=True, null=True)
 
     def __str__(self):
         return self.description
