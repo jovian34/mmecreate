@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['mmescreationsllc.com', 'www.mmescreationsllc.com',
+ALLOWED_HOSTS = ['mmescreations.com', 'www.mmescreations.com',
                  '167.71.188.32', 'localhost']
 
 
