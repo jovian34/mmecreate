@@ -143,3 +143,5 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 
 SESSION_COOKIE_SECURE = True
+
+STATIC_ROOT = "/var/www/mmescreations.com/static/"
