@@ -26,11 +26,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = bool(int(os.environ.get('DEVELOP')))
 
 
-ALLOWED_HOSTS = ['mmescreations.com', 'www.mmescreations.com',
-                 '167.71.188.32', 'localhost']
+if not bool(int(os.environ.get('DEVELOP'))):
+    ALLOWED_HOSTS = ['mmescreations.com', 'www.mmescreations.com',
+                     '167.71.188.32', ]
+else:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -130,18 +133,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+if not bool(int(os.environ.get('DEVELOP'))):
+    # added due to security warnings
+    CSRF_COOKIE_SECURE = True
 
-# added due to security warnings
-CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = 9999
 
-SECURE_HSTS_SECONDS = 9999
+    SECURE_SSL_REDIRECT = True
 
-SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
 
-SECURE_HSTS_PRELOAD = True
+    SESSION_COOKIE_SECURE = True
 
-SESSION_COOKIE_SECURE = True
-
-STATIC_ROOT = "/home/carl/mmecreate/mmestore/static/"
+    STATIC_ROOT = "/home/carl/mmecreate/mmestore/static/"
