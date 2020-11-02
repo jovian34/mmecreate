@@ -11,6 +11,15 @@
         <table>
 
         {% for item in items %}
+            {% if item.has_it_been_sold %}
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                <h4>{{ item.item_number }}</h4>
+                </td>
+
+            {% else %}
           <tr>
             <td>
                 <a href="{% url 'craft_item'  item.item_number %}">
@@ -24,8 +33,11 @@
             <td>
                 <p>${{ item.price|floatformat:2 }}</p>
             </td>
+            <td>
+                <h4>{{ item.item_number }}</h4>
+            </td>
           </tr>
-
+            {% endif %}
 
         {% endfor %}
 

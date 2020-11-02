@@ -17,7 +17,7 @@ def categories(request):
 
 def category(request, category_id):
     category_item = get_object_or_404(Category, pk=category_id)
-    craft_items = CraftItem.objects.filter(category=category_id).order_by('item_number')
+    craft_items = CraftItem.objects.filter(category=category_id).order_by('-item_number')
     context = {
         'category_name': category_item.cat_name,
         'items': craft_items,
