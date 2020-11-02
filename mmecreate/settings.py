@@ -144,4 +144,4 @@ SECURE_HSTS_PRELOAD = True
 
 SESSION_COOKIE_SECURE = True
 
-STATIC_ROOT = "/var/www/mmescreations.com/static/"
+STATIC_ROOT = "/home/carl/static/mmescreate/static/"
