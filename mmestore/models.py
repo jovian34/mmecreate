@@ -25,6 +25,7 @@ class CraftItem(models.Model):
     width = models.FloatField(default=None, blank=True, null=True)
     height = models.FloatField(default=None, blank=True, null=True)
     depth = models.FloatField(default=None, blank=True, null=True)
+    dress_size = models.FloatField(default=None, blank=True, null=True)
 
     def __str__(self):
         return self.description
