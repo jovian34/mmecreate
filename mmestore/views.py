@@ -35,4 +35,7 @@ def craft_item(request, item_number):
     return render(request, 'mmestore/craft_item.html', context)
 
 
+def item_lookup(request):
+    pass
+
 
