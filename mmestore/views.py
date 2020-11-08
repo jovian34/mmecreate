@@ -8,7 +8,7 @@ def index(request):
 
 
 def categories(request):
-    category_list = Category.objects.order_by('item_range_min')
+    category_list = Category.objects.order_by('cat_name')
     context = {
         'category_list': category_list,
     }
