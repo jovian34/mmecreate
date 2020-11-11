@@ -39,3 +39,6 @@ def item_lookup(request):
     pass
 
 
+def construction(request):
+    return render(request, 'mmestore/construction.html')
+
