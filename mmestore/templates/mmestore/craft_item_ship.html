@@ -42,25 +42,24 @@
         {% endif %}
     </ul>
 
-    <h2>Purchase for Artie Fest ONLY pickup via PayPal below</h2>
+    <h2>Purchase for Artie Fest via PayPal below for shipping to a United States address</h2>
     <table>
         <tr>
             <td>Price:</td>
             <td>${{ item.price|floatformat:2 }}</td>
         </tr>
         <tr>
-            <td>Artie Fest Safe Pickup Sunday November 16, 2020:</td>
-            <td>FREE</td>
+            <td>Shipping & Handling:</td>
+            <td>${{ item.shipping|floatformat:2 }}</td>
         </tr>
         <tr>
             <td>Subtotal:</td>
-            <td>${{ item.price|floatformat:2 }}</td>
+            <td>${{ ship_price|floatformat:2 }}</td>
         </tr>
     </table>
     <br>
-    <h3>To have it shipped for ${{ item.shipping|floatformat:2 }} more to a US address: <a href="{% url 'craft_item_ship' item.item_number %}">CLICK HERE</a></h3>
 
-    <script src="https://www.paypal.com/sdk/js?client-id=Aenx_HHLEoMdk-H7nqPQM4y2rKQvgtoicaXqXt3d9HLSMwVck9S9LYjtp1409mhRixThAZ_v63R-un_x"> // Replace YOUR_SB_CLIENT_ID with your sandbox client ID
+    <script src="https://www.paypal.com/sdk/js?client-id=AUjxQwiyAhymT5r1z8nyCyZXi6mzAvRbzU9jjL_2Aw5ej33A04zkPZnHT4NSupPG33cQPbx2wTSdA9H4"> // Replace YOUR_SB_CLIENT_ID with your sandbox client ID
     </script>
 
     <div id="paypal-button-container"></div>
@@ -72,9 +71,9 @@
           return actions.order.create({
             purchase_units: [{
               amount: {
-                value: '{{ item.price|floatformat:2 }}'
+                value: '{{ ship_price|floatformat:2 }}'
               },
-              description: '{{ category_name }} - {{ item.description }} - {{ item.item_number }} - Artie Fest Safe Pickup Sunday November 16, 2020'
+              description: '{{ category_name }} - {{ item.description }} - {{ item.item_number }} - for shipping to U.S. address'
             }]
           });
         },

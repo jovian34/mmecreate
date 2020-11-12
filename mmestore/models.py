@@ -19,6 +19,7 @@ class CraftItem(models.Model):
     photo_back_width = models.IntegerField(default=None, blank=True, null=True)
     photo_back_height = models.IntegerField(default=None, blank=True, null=True)
     price = models.FloatField(default=None, blank=True, null=True)
+    shipping = models.FloatField(default=None, blank=True, null=True)
     has_it_been_sold = models.BooleanField(default=False)
     width = models.FloatField(default=None, blank=True, null=True)
     height = models.FloatField(default=None, blank=True, null=True)

@@ -35,6 +35,21 @@ def craft_item(request, item_number):
     return render(request, 'mmestore/craft_item.html', context)
 
 
+def craft_item_ship(request, item_number):
+    item = get_object_or_404(CraftItem, item_number=item_number)
+    if item.shipping:
+        ship_price = item.price + item.shipping
+    else:
+        ship_price = item.price
+    item_category = item.category.cat_name
+    context = {
+        'item': item,
+        'category_name': item_category,
+        'ship_price': ship_price,
+    }
+    return render(request, 'mmestore/craft_item_ship.html', context)
+
+
 def item_lookup(request):
     pass
 
