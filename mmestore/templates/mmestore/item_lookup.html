@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Mme's Creations{%  endblock %}
+
+{% block content %}
+
+    <h1>Artie Fest</h1>
+
+    <h2>Shop by <a href="categories">Category</a> </h2>
+
+    <h2>Shop by item number:</h2>
+    <h3>enter 4 digital item ID from Facebook slide show</h3>
+
+    <form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+    </form>
+
+{% endblock %}

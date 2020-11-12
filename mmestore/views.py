@@ -1,6 +1,7 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 
 from .models import Category, CraftItem
+from .forms import ItemNumberForm
 
 
 def index(request):
@@ -50,10 +51,16 @@ def craft_item_ship(request, item_number):
     return render(request, 'mmestore/craft_item_ship.html', context)
 
 
-def item_lookup(request):
-    pass
-
-
 def construction(request):
     return render(request, 'mmestore/construction.html')
 
+
+def item_lookup(request):
+    if request.method == 'POST':
+        form = ItemNumberForm(request.POST)
+        if form.is_valid():
+            item_num = form.cleaned_data['item_num']
+            return redirect('craft_item', item_number=item_num)
+    else:
+        form = ItemNumberForm()
+        return render(request, 'mmestore/item_lookup.html', {'form': form})
