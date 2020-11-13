@@ -5,7 +5,8 @@ from .forms import ItemNumberForm
 
 
 def index(request):
-    return render(request, 'mmestore/index.html')
+    # return render(request, 'mmestore/index.html')
+    return redirect('item_lookup') # for Artie FEST
 
 
 def categories(request):
