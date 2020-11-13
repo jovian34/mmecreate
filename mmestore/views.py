@@ -34,6 +34,10 @@ def craft_item(request, item_number):
         'item': item,
         'category_name': item_category,
     }
+
+    if item.has_it_been_sold:
+        return render(request, 'mmestore/craft_item_sold.html', context)
+
     return render(request, 'mmestore/craft_item.html', context)
 
 

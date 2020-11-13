@@ -27,3 +27,7 @@ td {
     border: 1px solid darkolivegreen;
     margin-inside: 5%;
 }
+
+#sold_out {
+    color: deeppink;
+}
