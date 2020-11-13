@@ -3,6 +3,8 @@ import os
 
 
 def home(request):
-    if os.environ.get('CONSTRUCTION'):
+    site_is_under_construction = int(os.environ.get('CONSTRUCTION'))
+    if site_is_under_construction:
         return redirect('mmestore/construction', request)
-    return redirect('/mmestore', request)
+    else:
+        return redirect('/mmestore', request)
