@@ -61,7 +61,7 @@ def item_lookup(request):
         form = ItemNumberForm(request.POST)
         if form.is_valid():
             item_num = form.cleaned_data['item_num']
-            return redirect('craft_item', item_number=item_num)
+            return redirect('craft_item_ship', item_number=item_num)
     else:
         form = ItemNumberForm()
         return render(request, 'mmestore/item_lookup.html', {'form': form})
