@@ -26,3 +26,7 @@ urlpatterns = [
     path('mmestore/', include('mmestore.urls')),
     path(f'{admin_word}/', admin.site.urls),
 ]
+
+admin.site.site_header = "Mme's Creations LLC"
+admin.site.site_title = "Mme's Store Inventory"
+admin.site.index_title = "Mme's Store Inventory"

@@ -7,5 +7,6 @@ admin.site.register(Category)
 @admin.register(CraftItem)
 class CraftItemAdmin(admin.ModelAdmin):
     model = CraftItem
-    list_display = ('item_number', 'category', 'description')
+    list_display = ('item_number', 'category', 'description', 'price',
+                    'shipping', 'has_it_been_sold',)
     search_fields = ['item_number']
