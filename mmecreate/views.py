@@ -8,3 +8,4 @@ def home(request):
         return redirect('mmestore/construction', request)
     else:
         return redirect('/mmestore', request)
+

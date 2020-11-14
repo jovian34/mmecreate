@@ -69,3 +69,5 @@ def item_lookup(request):
     else:
         form = ItemNumberForm()
         return render(request, 'mmestore/item_lookup.html', {'form': form})
+
+
