@@ -33,7 +33,7 @@ class CraftItemViewTests(TestCase):
     def test_category_page_lists_items(self):
         category_page_client = Client()
         response = category_page_client.get('/mmestore/category/3/')
-        self.assertIs(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
         contain_text = 'fancy blue wallet'
         self.assertContains(response, contain_text)
         contain_text = 'fancy pink wallet'
@@ -46,7 +46,7 @@ class CraftItemViewTests(TestCase):
     def test_craft_item_page_item(self):
         craft_item_page_item_client = Client()
         response = craft_item_page_item_client.get('/mmestore/craft_item/2002/')
-        self.assertIs(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
         contain_text = 'fancy red wallet'
         self.assertContains(response, contain_text)
         contain_text = 'pocket wallet'
@@ -54,10 +54,10 @@ class CraftItemViewTests(TestCase):
         contain_text = 'fancy pink wallet'
         self.assertNotContains(response, contain_text)
 
-    def test_miskeyed_item_number_forwards(self):
+    def test_miskeyed_item_number_raises_404(self):
         miskeyed_craft_item_page_item_client = Client()
         response = miskeyed_craft_item_page_item_client.get('/mmestore/craft_item/4009/')
-        self.assertIs(response.status_code, 302)
+        self.assertEqual(response.status_code, 404)
 
 
 
