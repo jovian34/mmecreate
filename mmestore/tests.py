@@ -10,11 +10,21 @@ class CraftItemViewTests(TestCase):
         self.table_runner = Category.objects.create(cat_name='table runner')
         self.hand_bag = Category.objects.create(cat_name='hand bag')
         self.pocket_wallet = Category.objects.create(cat_name='pocket wallet')
-        CraftItem.objects.create(category=self.pocket_wallet, item_number='2001', description='fancy pink wallet')
-        CraftItem.objects.create(category=self.pocket_wallet, item_number='2002', description='fancy red wallet')
-        CraftItem.objects.create(category=self.pocket_wallet, item_number='2003', description='fancy blue wallet')
-        CraftItem.objects.create(category=self.hand_bag, item_number='1001', description='fancy purple hand bag')
-        CraftItem.objects.create(category=self.table_runner, item_number='0001', description='fancy pink table runner')
+        CraftItem.objects.create(category=self.pocket_wallet,
+                                 item_number='2001',
+                                 description='fancy pink wallet')
+        CraftItem.objects.create(category=self.pocket_wallet,
+                                 item_number='2002',
+                                 description='fancy red wallet')
+        CraftItem.objects.create(category=self.pocket_wallet,
+                                 item_number='2003',
+                                 description='fancy blue wallet')
+        CraftItem.objects.create(category=self.hand_bag,
+                                 item_number='1001',
+                                 description='fancy purple hand bag')
+        CraftItem.objects.create(category=self.table_runner,
+                                 item_number='0001',
+                                 description='fancy pink table runner')
 
     def test_duplicate_item_raises_integrity_error(self):
         def create_dup_item_num():

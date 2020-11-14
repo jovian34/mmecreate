@@ -42,14 +42,14 @@
         {% endif %}
     </ul>
 
-    <h2>Purchase for Artie Fest ONLY pickup via PayPal below</h2>
+    <h2>Purchase for In Person Events ONLY</h2>
     <table>
         <tr>
             <td>Price:</td>
             <td>${{ item.price|floatformat:2 }}</td>
         </tr>
         <tr>
-            <td>Artie Fest Safe Pickup Sunday November 15, 2020:</td>
+            <td>***In person purchase ONLY***</td>
             <td>FREE</td>
         </tr>
         <tr>
@@ -74,7 +74,7 @@
               amount: {
                 value: '{{ item.price|floatformat:2 }}'
               },
-              description: '{{ category_name }} - {{ item.description }} - {{ item.item_number }} - Artie Fest Safe Pickup Sunday November 15, 2020'
+              description: '{{ category_name }} - {{ item.description }} - {{ item.item_number }} - ***In person purchase ONLY***'
             }]
           });
         },

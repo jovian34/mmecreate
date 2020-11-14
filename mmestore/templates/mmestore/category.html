@@ -22,7 +22,7 @@
             {% else %}
           <tr>
             <td>
-                <a href="{% url 'craft_item'  item.item_number %}">
+                <a href="{% url 'craft_item_ship'  item.item_number %}">
                 <img src="{{ item.photo_front }}" width="{{ item.photo_front_width }}" height="{{ item.photo_front_height }}"
                 alt="{{ item.description }}">
                 </a>

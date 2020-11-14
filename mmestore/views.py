@@ -56,10 +56,6 @@ def craft_item_ship(request, item_number):
     return render(request, 'mmestore/craft_item_ship.html', context)
 
 
-def construction(request):
-    return render(request, 'mmestore/construction.html')
-
-
 def item_lookup(request):
     if request.method == 'POST':
         form = ItemNumberForm(request.POST)
