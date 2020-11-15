@@ -1,33 +1,89 @@
 
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+
+/*------------BANNER--------------*/
+#banner {
+
+}
+
+img.col6 {
+        width: 100%;
+        height: auto;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid #999;
+        background-color: rgba(0,0,0,0.3);
+    }
+
+img.col12 {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        border: none;
+        background-color: rgba(0,0,0,0.3);
+    }
+
+.column-6, .column-12 {
+    width: 100%;
+    padding: .5em 2%;
+
+}
 
 body    {
     font-family: 'Catamaran', sans-serif;
     margin: 5%;
 }
 
-.content {
+#content {
     background-color: lightgrey;
-    padding: 5%;
+    padding: .5em 2%;
 }
 
-#mme-banner {
-    horiz-align: center;
+#cat_item {
+    border: 2px solid #999999;
+    background-color: lightgrey;
 }
+
 
 a {
     color: deeppink;
 }
 
-.res-table {
-    overflow-x: auto;
-}
-
-
-td {
-    border: 1px solid darkolivegreen;
-    margin-inside: 5%;
-}
-
 #sold_out {
     color: deeppink;
 }
+
+footer {
+    clear: both;
+    font-size: .7em;
+    text-align: center;
+    padding: .6em;
+}
+
+@media only screen and (min-width: 641px) {
+/*------------BANNER--------------*/
+#banner {
+
+}
+
+
+    .column-6 {
+        float: left;
+        width: 50%;
+    }
+
+    #cat_item {
+        border: none;
+        background-color: white;
+    }
+
+    #cat_break {
+        background-color: darkgray;
+    }
+}
+

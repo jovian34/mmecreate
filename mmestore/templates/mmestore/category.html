@@ -2,50 +2,40 @@
 
 {% block title %}Mme's Creations: {{ category_name }} {%  endblock %}
 
-{% block content %}
+
+
+<div class="column-12"></div>
+
+{% block full-content %}
 <h1>Category: {{ category_name }}</h1>
 
     {% if items %}
 
-        <div class="res-table">
-        <table>
-
         {% for item in items %}
+            <div id="cat_break" class="column-12"></div>
             {% if item.has_it_been_sold %}
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                <h4>{{ item.item_number }}</h4>
-                </td>
-
             {% else %}
-          <tr>
-            <td>
-                <a href="{% url 'craft_item_ship'  item.item_number %}">
-                <img src="{{ item.photo_front }}" width="{{ item.photo_front_width }}" height="{{ item.photo_front_height }}"
-                alt="{{ item.description }}">
-                </a>
-            </td>
-            <td>
-                <p>{{ item.description }}</p>
-            </td>
-            <td>
-                <p>${{ item.price|floatformat:2 }}</p>
-            </td>
-            <td>
-                <h4>{{ item.item_number }}</h4>
-            </td>
-          </tr>
+                <div class="column-12" id="cat_item">
+                    <div class="column-6">
+                    <a href="{% url 'craft_item_ship'  item.item_number %}">
+                    <img class="col6" src="{{ item.photo_front }}" alt="{{ item.description }}">
+                    </a>
+                    </div>
+
+                    <div class="column-6">
+                    <h4>{{ item.description }}</h4>
+                    <h4>Price: ${{ item.price|floatformat:2 }}</h4>
+                    <h4>Item Number: {{ item.item_number }}</h4>
+                    </div>
+                </div>
             {% endif %}
+            <br clear="both">
+
 
         {% endfor %}
 
-        </table>
-        </div>
     {%  else %}
         <h3>No {{ category_name.lower }} items are currently listed in the database.</h3>
-
     {% endif %}
 {% endblock %}
 

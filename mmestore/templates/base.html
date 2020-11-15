@@ -10,11 +10,16 @@
   </head>
   <body>
 
-    <a href="{% url 'index' %}">
-    <img src="https://live.staticflickr.com/65535/50551539093_1a1b2b8384_w.jpg"
-         width="400" height="137" alt="Mme's Creations" id="mme-banner"></a>
+    <div id="banner" class="column-12">
+        <a href="{% url 'index' %}">
+        <img class="col12" src="https://live.staticflickr.com/65535/50551539093_1a1b2b8384_c.jpg"
+             alt="Mme's Creations" id="mme-banner"></a>
+    </div><!-- end of banner -->
 
-    <div class="content">{% block content %}{% endblock %}</div>
+    <div class="column-6">{% block content %}{% endblock %}</div>
+    <div class="column-6">{% block side-content %}{% endblock %}</div>
+    <div class="column-12">{% block full-content %}{% endblock %}</div>
+
 
   </body>
 
