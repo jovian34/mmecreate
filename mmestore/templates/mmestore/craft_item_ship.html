@@ -1,14 +1,10 @@
 {% extends "base.html" %}
 
-{% block moremeta %}
-    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices. -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Optimal Internet Explorer compatibility -->
-{% endblock %}
-
 {% block title %}Mme's Creations: {{ category_name }} - {{ item.description }} {%  endblock %}
 
 {% block full-content %}
-<h1>{{ category_name }}: {{ item.item_number }} - {{ item.description }}</h1>
+<h1>{{ category_name }}:</h1>
+<h2> {{ item.item_number }} - {{ item.description }}</h2>
 {% endblock %}
 
 
@@ -44,7 +40,12 @@
         {% endif %}
     </ul>
 
-    <h2>Purchase via PayPal below for shipping to a United States address</h2>
+
+
+{% endblock %}
+
+{% block side-content %}
+<h2>Purchase via PayPal below for shipping to a United States address</h2>
     <table>
         <tr>
             <td>Price:</td>
@@ -86,5 +87,4 @@
         }
       }).render('#paypal-button-container'); // Display payment options on your web page
     </script>
-
-{% endblock %}
+{%  endblock %}

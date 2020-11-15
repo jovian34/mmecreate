@@ -1,15 +1,14 @@
 {% extends "base.html" %}
 
-{% block moremeta %}
-    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices. -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Optimal Internet Explorer compatibility -->
-{% endblock %}
-
 {% block title %}Mme's Creations: {{ category_name }} - {{ item.description }} {%  endblock %}
+
+{% block full-content %}
+<h1>{{ category_name }}:</h1>
+<h2> {{ item.item_number }} - {{ item.description }}</h2>
+{% endblock %}
 
 {% block content %}
 
-<h1>{{ category_name }}: {{ item.item_number }} - {{ item.description }}</h1>
 
     {% if item.photo_front %}
     <img src="{{ item.photo_front }}" width="{{ item.photo_front_width }}" height="{{ item.photo_front_height }}"
@@ -42,6 +41,11 @@
         {% endif %}
     </ul>
 
+
+
+{% endblock %}
+
+{% block side-content %}
     <h2>Purchase for In Person Events ONLY</h2>
     <table>
         <tr>
@@ -85,5 +89,4 @@
         }
       }).render('#paypal-button-container'); // Display payment options on your web page
     </script>
-
 {% endblock %}
