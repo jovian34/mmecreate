@@ -11,12 +11,12 @@
   <body>
 
     <div class="column-12">
-        <div id="logo">
-            <a href="{% url 'index' %}">
-            <img id="logo" src="{% static 'mmestore/mmelogo.png' %}"
-             alt="Mme's Creations" id="mme-banner"></a>
-        </div>
+
+        <a href="{% url 'index' %}"><img id="logo" src="{% static 'mmestore/mmelogo_text.png' %}"
+             alt="Mme's Creations"></a>
+
     </div><!-- end of banner -->
+    <div class="column-12"><br clear="both"></div>
 
     <div class="column-12">{% block full-content %}{% endblock %}</div>
     <div class="column-6">{% block content %}{% endblock %}</div>
