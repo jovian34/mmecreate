@@ -12,18 +12,28 @@ class CraftItemViewTests(TestCase):
         self.pocket_wallet = Category.objects.create(cat_name='pocket wallet')
         CraftItem.objects.create(category=self.pocket_wallet,
                                  item_number='2001',
+                                 price=8,
+                                 shipping=4,
                                  description='fancy pink wallet')
         CraftItem.objects.create(category=self.pocket_wallet,
                                  item_number='2002',
+                                 price=9,
+                                 shipping=5,
                                  description='fancy red wallet')
         CraftItem.objects.create(category=self.pocket_wallet,
                                  item_number='2003',
+                                 price=7,
+                                 shipping=3,
                                  description='fancy blue wallet')
         CraftItem.objects.create(category=self.hand_bag,
                                  item_number='1001',
+                                 price=15,
+                                 shipping=6,
                                  description='fancy purple hand bag')
         CraftItem.objects.create(category=self.table_runner,
                                  item_number='0001',
+                                 price=22.5,
+                                 shipping=9.25,
                                  description='fancy pink table runner')
 
     def test_duplicate_item_raises_integrity_error(self):
@@ -36,7 +46,7 @@ class CraftItemViewTests(TestCase):
     def test_item_lookup_page_renders(self):
         item_lookup_page_client = Client()
         response = item_lookup_page_client.get('/mmestore/item_lookup')
-        contain_text = 'enter 4 digital item ID'
+        contain_text = 'Shop by item number:'
         self.assertContains(response, contain_text)
         self.assertIs(response.status_code, 200)
 
@@ -63,6 +73,14 @@ class CraftItemViewTests(TestCase):
         self.assertContains(response, contain_text)
         contain_text = 'fancy pink wallet'
         self.assertNotContains(response, contain_text)
+
+    def test_shipping_price_reported(self):
+        shipping_price_client = Client()
+        response = shipping_price_client.get('/mmestore/craft_item_ship/0001/')
+        self.assertEqual(response.status_code, 200)
+        shipping = response.context['ship_price']
+        self.assertEqual(shipping, 31.75)
+        self.assertContains(response, '31.75')
 
     def test_miskeyed_item_number_raises_404(self):
         miskeyed_craft_item_page_item_client = Client()
