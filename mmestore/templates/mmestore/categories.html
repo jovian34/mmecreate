@@ -10,8 +10,8 @@
         <ul>
 
         {% for category in category_list %}
-            <li><a href="{% url 'category' category.pk %}">
-                {{ category.cat_name }}</a></li>
+            <li><h2><a href="{% url 'category' category.pk %}">
+                {{ category.cat_name }}</a></h2></li>
         {% endfor %}
 
         </ul>
