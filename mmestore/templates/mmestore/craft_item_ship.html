@@ -7,10 +7,12 @@
 
 {% block title %}Mme's Creations: {{ category_name }} - {{ item.description }} {%  endblock %}
 
-{% block content %}
-
+{% block full-content %}
 <h1>{{ category_name }}: {{ item.item_number }} - {{ item.description }}</h1>
+{% endblock %}
 
+
+{% block content %}
     {% if item.photo_front %}
     <img src="{{ item.photo_front }}" width="{{ item.photo_front_width }}" height="{{ item.photo_front_height }}"
     alt="{{ item.description }}">

@@ -6,10 +6,6 @@
 }
 
 
-/*------------BANNER--------------*/
-#banner {
-
-}
 
 img.col6 {
         width: 100%;
@@ -37,7 +33,7 @@ img.col12 {
 body    {
     font-family: 'Catamaran', sans-serif;
     margin: 5%;
-    font-size: large;
+    font-size: xx-large;
 }
 
 #content {
