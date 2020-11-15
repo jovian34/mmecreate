@@ -6,14 +6,18 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'mmestore/style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Catamaran&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="{% static 'mmestore/icon.ico' %}"/>
   </head>
   <body>
 
     <div class="column-12">
-        <a href="{% url 'index' %}">
-        <img class="col12" src="https://live.staticflickr.com/65535/50551539093_1a1b2b8384_c.jpg"
+        <div id="logo">
+            <a href="{% url 'index' %}">
+            <img id="logo" src="{% static 'mmestore/mmelogo.png' %}"
              alt="Mme's Creations" id="mme-banner"></a>
+        </div>
     </div><!-- end of banner -->
+
     <div class="column-12">{% block full-content %}{% endblock %}</div>
     <div class="column-6">{% block content %}{% endblock %}</div>
     <div class="column-6">{% block side-content %}{% endblock %}</div>

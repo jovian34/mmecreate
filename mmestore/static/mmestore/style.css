@@ -5,7 +5,10 @@
     -webkit-box-sizing: border-box;
 }
 
-
+#logo {
+    float: left;
+    height: 500px;
+}
 
 img.col6 {
         width: 100%;
