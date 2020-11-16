@@ -9,8 +9,7 @@
 
         {% for item in items %}
             <div id="cat_break" class="column-12"></div>
-            {% if item.has_it_been_sold %}
-            {% else %}
+
                 <div class="column-12" id="cat_item">
                     <div class="column-6">
                     <a href="{% url 'craft_item_ship'  item.item_number %}">
@@ -24,7 +23,6 @@
                     <h4>Item Number: {{ item.item_number }}</h4>
                     </div>
                 </div>
-            {% endif %}
             <br clear="both">
 
 
