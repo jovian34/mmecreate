@@ -49,7 +49,6 @@ class CraftFair(models.Model):
     third_end_time = models.DateTimeField(default=None, blank=True, null=True)
     photo_fair = models.URLField(
         default="https://www.flickr.com/photos/jovian34/31652682857/in/album-72157719574898957/",
-        title="30380028110_0b07ef5f7a_o",
         blank=True,
         null=True,
         max_length=200
