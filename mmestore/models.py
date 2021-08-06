@@ -34,17 +34,15 @@ class CraftItem(models.Model):
 
 class CraftFair(models.Model):
     fair_name = models.CharField(max_length=200)
+    fair_url = models.URLField(default=None, blank=True, null=True, max_length=200)
     address = models.CharField(default=None, blank=True, null=True, max_length=200)
     city = models.CharField(default=None, blank=True, null=True, max_length=200)
     state = models.CharField(default='IN', blank=True, null=True, max_length=200)
     zip = models.CharField(default=None, blank=True, null=True, max_length=20)
-    start_date = models.DateField('day the fair starts')
     first_start_time = models.DateTimeField(default=None)
     first_end_time = models.DateTimeField(default=None)
-    second_date = models.DateField(default=None, blank=True, null=True)
     second_start_time = models.DateTimeField(default=None, blank=True, null=True)
     second_end_time = models.DateTimeField(default=None, blank=True, null=True)
-    third_date = models.DateField(default=None, blank=True, null=True)
     third_start_time = models.DateTimeField(default=None, blank=True, null=True)
     third_end_time = models.DateTimeField(default=None, blank=True, null=True)
     photo_fair = models.URLField(

@@ -15,4 +15,4 @@ class CraftItemAdmin(admin.ModelAdmin):
 @admin.register(CraftFair)
 class CraftFairAdmin(admin.ModelAdmin):
     model = CraftFair
-    list_display = ('fair_name', 'start_date')
+    list_display = ('fair_name', 'first_start_time')
