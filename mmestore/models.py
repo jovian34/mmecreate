@@ -20,13 +20,13 @@ class CraftItem(models.Model):
     photo_back_width = models.IntegerField(default=None, blank=True, null=True)
     photo_back_height = models.IntegerField(default=None, blank=True, null=True)
     price = models.FloatField(default=None, blank=True, null=True)
-    shipping = models.FloatField(default=None, blank=True, null=True)
+    shipping = models.FloatField(default=5.0, blank=True, null=True)
     has_it_been_sold = models.BooleanField(default=False)
     width = models.FloatField(default=None, blank=True, null=True)
     height = models.FloatField(default=None, blank=True, null=True)
     depth = models.FloatField(default=None, blank=True, null=True)
     dress_size = models.FloatField(default=None, blank=True, null=True)
-    pay_code = models.CharField(default=None, blank=True, null=True,  max_length=10000)
+    pay_code = models.CharField(default=None, blank=True, null=True,  max_length=10001)
 
     def __str__(self):
         return self.description
