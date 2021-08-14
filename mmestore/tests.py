@@ -1,8 +1,8 @@
 from django.test import Client, TestCase
 from django.db.utils import IntegrityError
+from datetime import datetime, timedelta
 
-from .models import CraftItem
-from .models import Category
+from .models import CraftItem, Category, CraftFair
 
 
 class CraftItemViewTests(TestCase):
@@ -52,6 +52,27 @@ class CraftItemViewTests(TestCase):
                                            description='fancy pink table runner')
         self.i6.save()
 
+        next_week = datetime.now() + timedelta(days=7)
+        next_week_end = next_week + timedelta(hours=8)
+        last_week = datetime.now() + timedelta(days=-7)
+        last_week_end = last_week + timedelta(hours=10)
+        self.f1 = CraftFair.objects.create(fair_name='Tipton Pork Festival',
+                                           fair_url='https:www.google.com',
+                                           address='Downtown',
+                                           city='Tipton',
+                                           state='IN',
+                                           first_start_time=next_week,
+                                           first_end_time=next_week_end)
+        self.f1.save()
+        self.f2 = CraftFair.objects.create(fair_name='Atlanta Eart Festival',
+                                           fair_url='https:www.google.com',
+                                           address='PO Box',
+                                           city='Altlanta',
+                                           state='IN',
+                                           first_start_time=last_week,
+                                           first_end_time=last_week_end)
+        self.f2.save()
+
     def test_duplicate_item_raises_integrity_error(self):
         def create_dup_item_num():
             CraftItem.objects.create(category=self.c1,
@@ -64,6 +85,13 @@ class CraftItemViewTests(TestCase):
         item_lookup_page_client = Client()
         response = item_lookup_page_client.get('/mmestore/item_lookup')
         contain_text = 'Shop by item number:'
+        self.assertContains(response, contain_text)
+        self.assertIs(response.status_code, 200)
+
+    def test_item_lookup_page_renders_fair(self):
+        item_lookup_page_client = Client()
+        response = item_lookup_page_client.get('/mmestore/item_lookup')
+        contain_text = 'Tipton'
         self.assertContains(response, contain_text)
         self.assertIs(response.status_code, 200)
 
