@@ -7,7 +7,7 @@
     <div id="craft-fairs">
 
 
-        <img class="img-right" src="{{ fair.photo_fair }}" width="{{ fair.photo_fair_width }}" height="{{ fair.photo_fair_height }}">
+        <img class="col6" id="fair_pic" src="{{ fair.photo_fair }}" width="{{ fair.photo_fair_width }}" height="{{ fair.photo_fair_height }}">
         <p><b>Come Shop our Next Craft Fair:</b> <a href="{{ fair.fair_url }}">{{ fair.fair_name }}</a></p>
         <ul>
         <li>{{ fair.first_start_time|date:"l"}}, {{ fair.first_start_time.date }}: {{ fair.first_start_time.time }} to {{ fair.first_end_time.time }} ET</li>

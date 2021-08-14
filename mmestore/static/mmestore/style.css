@@ -88,8 +88,10 @@ footer {
         background-color: darkgray;
     }
 
-    .img-right {
+    #fair_pic {
+        width: 40%;
         float: right;
+
     }
 }
 
