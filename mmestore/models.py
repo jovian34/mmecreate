@@ -46,10 +46,13 @@ class CraftFair(models.Model):
     third_start_time = models.DateTimeField(default=None, blank=True, null=True)
     third_end_time = models.DateTimeField(default=None, blank=True, null=True)
     photo_fair = models.URLField(
-        default="https://www.flickr.com/photos/jovian34/31652682857/in/album-72157719574898957/",
+        default="https://live.staticflickr.com/7893/31652682857_186874f73f_w.jpg",
         blank=True,
         null=True,
         max_length=200
     )
     photo_fair_width = models.IntegerField(default=400, blank=True, null=True)
     photo_fair_height = models.IntegerField(default=300, blank=True, null=True)
+
+    def __str__(self):
+        return self.fair_name

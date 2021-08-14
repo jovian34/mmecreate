@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 
-from .models import Category, CraftItem
+from datetime import datetime
+from .models import Category, CraftItem, CraftFair
 from .forms import ItemNumberForm
 
 
@@ -65,7 +66,14 @@ def item_lookup(request):
             item_num = form.cleaned_data['item_num']
             return redirect('craft_item_ship', item_number=item_num)
     else:
+        fair_q = CraftFair.objects.exclude(first_start_time__lt=datetime.now()).\
+            order_by('first_start_time')
+        fair = fair_q[0]
         form = ItemNumberForm()
-        return render(request, 'mmestore/item_lookup.html', {'form': form})
+        context = {
+            'fair': fair,
+            'form': form,
+        }
+        return render(request, 'mmestore/item_lookup.html', context)
 
 

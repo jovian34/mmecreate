@@ -4,6 +4,14 @@
 
 {% block content %}
 
+    <div id="craft-fairs">
+
+        <h3>Next Craft Fair: <a href="{{ fair.fair_url }}">{{ fair.fair_name }}</a></h3>
+    <img src="{{ fair.photo_fair }}" width="{{ fair.photo_fair_width }}" height="{{ fair.photo_fair_height }}">
+    <p>starts: {{ fair.first_start_time }}</p>
+
+    </div>
+
     <div id="content">
 
     <h1>Welcome to Mme's Creations</h1>
@@ -27,5 +35,5 @@
 {% endblock %}
 
 {% block side-content %}
-    <img class="col6" src="https://live.staticflickr.com/65535/50580339268_d06e7ae544_b.jpg">
+    <img class="col6" src="https://live.staticflickr.com/65535/50581070236_8531d29f02_w.jpg">
 {% endblock %}
