@@ -2,19 +2,37 @@
 
 {% block title %}Mme's Creations{%  endblock %}
 
-{% block content %}
+{% block full-content %}
 
     <div id="craft-fairs">
 
-        <h3>Next Craft Fair: <a href="{{ fair.fair_url }}">{{ fair.fair_name }}</a></h3>
-    <img src="{{ fair.photo_fair }}" width="{{ fair.photo_fair_width }}" height="{{ fair.photo_fair_height }}">
-    <p>starts: {{ fair.first_start_time }}</p>
+
+        <img class="img-right" src="{{ fair.photo_fair }}" width="{{ fair.photo_fair_width }}" height="{{ fair.photo_fair_height }}">
+        <p><b>Next Craft Fair:</b> <a href="{{ fair.fair_url }}">{{ fair.fair_name }}</a></p>
+        <ul>
+        <li>{{ fair.first_start_time|date:"l"}}, {{ fair.first_start_time.date }}: {{ fair.first_start_time.time }} to {{ fair.first_end_time.time }} ET</li>
+
+        {% if fair.second_start_time %}
+            <li>{{ fair.second_start_time|date:"l"}}, {{ fair.second_start_time.date }}: {{ fair.second_start_time.time }} to {{ fair.second_end_time.time }} ET</li>
+        {% endif %}
+
+        {% if fair.third_start_time %}
+            <li>{{ fair.third_start_time|date:"l"}}, {{ fair.third_start_time.date }}: {{ fair.third_start_time.time }} to {{ fair.third_end_time.time }} ET</li>
+        {% endif %}
+        </ul>
+
+        <p><b>Location:</b> {{ fair.address }} {{ fair.city }}, {{ fair.state }}</p>
+
 
     </div>
 
-    <div id="content">
+{%  endblock %}
 
-    <h1>Welcome to Mme's Creations</h1>
+{% block content %}
+
+
+
+    <div id="content">
 
     <h2>Shop by <a href="categories">Category</a> </h2>
 
