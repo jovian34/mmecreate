@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Mme's Creations Craft Fairs{%  endblock %}
+
+{% block full-content %}
+
+    {% if fair_in_progress %}
+        <div class="column-12" id="craft-fairs">
+        <img class="col6" id="fair_pic" src="{{ last_fair.photo_fair }}" width="{{ last_fair.photo_fair_width }}" height="{{ last_fair.photo_fair_height }}">
+        <h1>Come see ust today at <a href="{{ last_fair.fair_url }}">{{ last_fair.fair_name }}</a></h1>
+        <ul>
+        <li>{{ last_fair.first_start_time|date:"l"}}, {{ last_fair.first_start_time.date }}: {{ last_fair.first_start_time.time }} to {{ last_fair.first_end_time.time }} ET</li>
+
+        {% if last_fair.second_start_time %}
+            <li>{{ last_fair.second_start_time|date:"l"}}, {{ last_fair.second_start_time.date }}: {{ last_fair.second_start_time.time }} to {{ last_fair.second_end_time.time }} ET</li>
+        {% endif %}
+
+        {% if last_fair.third_start_time %}
+            <li>{{ last_fair.third_start_time|date:"l"}}, {{ last_fair.third_start_time.date }}: {{ last_fair.third_start_time.time }} to {{ last_fair.third_end_time.time }} ET</li>
+        {% endif %}
+        </ul>
+
+        <p><b>Location:</b> {{ last_fair.address }} {{ last_fair.city }}, {{ last_fair.state }}</p>
+        </div>
+        <div class="column-12"><hr></div>
+    {% endif %}
+
+    <hr>
+
+    <h1>Upcoming Craft Fairs:</h1>
+    <p>Come see these items in person and shop without shipping fees!</p>
+
+    {% for fair in fairs_future %}
+
+        <div class="column-12" id="craft-fairs">
+
+        <img class="col6" id="fair_pic" src="{{ fair.photo_fair }}" width="{{ fair.photo_fair_width }}" height="{{ fair.photo_fair_height }}">
+        <h2><a href="{{ fair.fair_url }}">{{ fair.fair_name }}</a></h2>
+
+        <ul>
+        <li>{{ fair.first_start_time|date:"l"}}, {{ fair.first_start_time.date }}: {{ fair.first_start_time.time }} to {{ fair.first_end_time.time }} ET</li>
+
+        {% if fair.second_start_time %}
+            <li>{{ fair.second_start_time|date:"l"}}, {{ fair.second_start_time.date }}: {{ fair.second_start_time.time }} to {{ fair.second_end_time.time }} ET</li>
+        {% endif %}
+
+        {% if fair.third_start_time %}
+            <li>{{ fair.third_start_time|date:"l"}}, {{ fair.third_start_time.date }}: {{ fair.third_start_time.time }} to {{ fair.third_end_time.time }} ET</li>
+        {% endif %}
+        </ul>
+
+        <p><b>Location:</b> {{ fair.address }} {{ fair.city }}, {{ fair.state }}</p>
+        </div>
+        <div class="column-12"><hr></div>
+    {% endfor %}
+
+    <div class="column-12"><h1 id="spacer">Craft Fairs we have attended:</h1></div>
+
+
+    {% for fair in fairs_past %}
+        <div class="column-12" id="craft-fairs">
+        <img class="col6" id="fair_pic" src="{{ fair.photo_fair }}" width="{{ fair.photo_fair_width }}" height="{{ fair.photo_fair_height }}">
+        <h2><a href="{{ fair.fair_url }}">{{ fair.fair_name }}</a></h2>
+
+        <ul>
+        <li>{{ fair.first_start_time|date:"l"}}, {{ fair.first_start_time.date }}: {{ fair.first_start_time.time }} to {{ fair.first_end_time.time }} ET</li>
+
+        {% if fair.second_start_time %}
+            <li>{{ fair.second_start_time|date:"l"}}, {{ fair.second_start_time.date }}: {{ fair.second_start_time.time }} to {{ fair.second_end_time.time }} ET</li>
+        {% endif %}
+
+        {% if fair.third_start_time %}
+            <li>{{ fair.third_start_time|date:"l"}}, {{ fair.third_start_time.date }}: {{ fair.third_start_time.time }} to {{ fair.third_end_time.time }} ET</li>
+        {% endif %}
+        </ul>
+        <p><b>Location:</b> {{ fair.address }} {{ fair.city }}, {{ fair.state }}</p>
+
+        </div>
+        <div class="column-12"><hr></div>
+    {% endfor %}
+
+
+{% endblock %}

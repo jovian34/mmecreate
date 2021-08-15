@@ -9,4 +9,5 @@ urlpatterns = [
     path(f'craft_item/<item_number>/', views.craft_item, name='craft_item'),
     path(f'craft_item_ship/<item_number>/', views.craft_item_ship, name='craft_item_ship'),
     path(f'item_lookup', views.item_lookup, name='item_lookup'),
+    path(f'more_craft_fairs', views.more_craft_fairs, name='more_craft_fairs'),
 ]

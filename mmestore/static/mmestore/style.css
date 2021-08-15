@@ -67,6 +67,10 @@ footer {
     padding: .6em;
 }
 
+#spacer {
+    background-color: lightsteelblue;
+}
+
 @media only screen and (min-width: 1200px) {
 /*------------BANNER--------------*/
 #banner {
@@ -91,6 +95,7 @@ footer {
     #fair_pic {
         width: 40%;
         float: right;
+        clear-after: both;
 
     }
 }

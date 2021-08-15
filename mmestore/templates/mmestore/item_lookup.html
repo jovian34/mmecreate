@@ -8,7 +8,14 @@
 
 
         <img class="col6" id="fair_pic" src="{{ fair.photo_fair }}" width="{{ fair.photo_fair_width }}" height="{{ fair.photo_fair_height }}">
-        <p><b>Come Shop our Next Craft Fair:</b> <a href="{{ fair.fair_url }}">{{ fair.fair_name }}</a></p>
+
+        <p>
+        {% if fair_info.in_progress %} <b>We are at a Craft Fair Today - Come see us:</b> {% endif %}
+
+        {% if not fair_info.in_progress %} <b>Come to our Next Craft Fair:</b> {% endif %}
+
+            <a href="{{ fair.fair_url }}">{{ fair.fair_name }}</a></p>
+
         <ul>
         <li>{{ fair.first_start_time|date:"l"}}, {{ fair.first_start_time.date }}: {{ fair.first_start_time.time }} to {{ fair.first_end_time.time }} ET</li>
 
@@ -22,6 +29,8 @@
         </ul>
 
         <p><b>Location:</b> {{ fair.address }} {{ fair.city }}, {{ fair.state }}</p>
+
+        <h3>See <a href="more_craft_fairs">More Craft Fairs</a></h3>
 
 
     </div>
