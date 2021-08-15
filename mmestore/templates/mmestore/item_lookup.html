@@ -4,7 +4,7 @@
 
 {% block full-content %}
 
-    <div id="craft-fairs">
+    <div {% if fair_info.in_progress %}id="in-progress"{% endif %}>
 
 
         <img class="col6" id="fair_pic" src="{{ fair.photo_fair }}" width="{{ fair.photo_fair_width }}" height="{{ fair.photo_fair_height }}">

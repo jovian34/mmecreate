@@ -5,9 +5,9 @@
 {% block full-content %}
 
     {% if fair_in_progress %}
-        <div class="column-12" id="craft-fairs">
+        <div class="column-12" id="in-progress">
         <img class="col6" id="fair_pic" src="{{ last_fair.photo_fair }}" width="{{ last_fair.photo_fair_width }}" height="{{ last_fair.photo_fair_height }}">
-        <h1>Come see ust today at <a href="{{ last_fair.fair_url }}">{{ last_fair.fair_name }}</a></h1>
+        <h1>Come see us today at <a href="{{ last_fair.fair_url }}">{{ last_fair.fair_name }}</a></h1>
         <ul>
         <li>{{ last_fair.first_start_time|date:"l"}}, {{ last_fair.first_start_time.date }}: {{ last_fair.first_start_time.time }} to {{ last_fair.first_end_time.time }} ET</li>
 
@@ -28,11 +28,11 @@
     <hr>
 
     <h1>Upcoming Craft Fairs:</h1>
-    <p>Come see these items in person and shop without shipping fees!</p>
+    <p>Come see our items in person and shop without shipping fees!</p>
 
     {% for fair in fairs_future %}
 
-        <div class="column-12" id="craft-fairs">
+        <div class="column-12" >
 
         <img class="col6" id="fair_pic" src="{{ fair.photo_fair }}" width="{{ fair.photo_fair_width }}" height="{{ fair.photo_fair_height }}">
         <h2><a href="{{ fair.fair_url }}">{{ fair.fair_name }}</a></h2>

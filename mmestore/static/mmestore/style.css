@@ -68,7 +68,11 @@ footer {
 }
 
 #spacer {
-    background-color: lightsteelblue;
+    background-color: #8cfffa;
+}
+
+#in-progress {
+    background-color: #8cfffa;
 }
 
 @media only screen and (min-width: 1200px) {
