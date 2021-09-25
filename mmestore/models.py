@@ -32,7 +32,7 @@ class CraftFair(models.Model):
     photo_fair_height = models.IntegerField(default=300, blank=True, null=True)
 
     def __str__(self):
-        return self.fair_name
+        return self.fair_name + self.first_start_time.year
 
 
 class CraftItem(models.Model):
@@ -53,7 +53,7 @@ class CraftItem(models.Model):
     depth = models.FloatField(default=None, blank=True, null=True)
     dress_size = models.FloatField(default=None, blank=True, null=True)
     pay_code = models.CharField(default=None, blank=True, null=True,  max_length=10000)
-    craft_fair = models.ForeignKey(CraftFair, default=None, null=True, on_delete=models.CASCADE)
+    craft_fair = models.ForeignKey(CraftFair, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.description
