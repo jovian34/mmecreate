@@ -32,7 +32,7 @@ class CraftFair(models.Model):
     photo_fair_height = models.IntegerField(default=300, blank=True, null=True)
 
     def __str__(self):
-        return self.fair_name + self.first_start_time.year
+        return f'{self.fair_name} {self.first_start_time.year}'
 
 
 class CraftItem(models.Model):
