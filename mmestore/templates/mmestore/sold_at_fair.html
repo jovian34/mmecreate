@@ -1,9 +1,9 @@
-category.html{% extends "base.html" %}
+{% extends "base.html" %}
 
-{% block title %}Mme's Creations: {{ category_name }} {%  endblock %}
+{% block title %}Mme's Creations: Items sold at {{ fair }} {%  endblock %}
 
 {% block full-content %}
-<h1>Category: {{ category_name }}</h1>
+<h1>Items sold at {{ fair }}</h1>
 
     {% if items %}
 
@@ -12,14 +12,11 @@ category.html{% extends "base.html" %}
 
                 <div class="column-12" id="cat_item">
                     <div class="column-6">
-                    <a href="{% url 'craft_item_ship'  item.item_number %}">
                     <img class="col6" src="{{ item.photo_front }}" alt="{{ item.description }}">
-                    </a>
                     </div>
 
                     <div class="column-6">
                     <h4>{{ item.description }}</h4>
-                    <h4>Price: ${{ item.price|floatformat:2 }}</h4>
                     <h4>Item Number: {{ item.item_number }}</h4>
                     </div>
                 </div>
@@ -29,7 +26,7 @@ category.html{% extends "base.html" %}
         {% endfor %}
 
     {%  else %}
-        <h3>No {{ category_name.lower }} items are currently listed in the database.</h3>
+        <h3>No items currently listed in the database sold at {{ fair }}.</h3>
     {% endif %}
 {% endblock %}
 

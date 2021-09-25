@@ -75,6 +75,8 @@
         </ul>
         <p><b>Location:</b> {{ fair.address }} {{ fair.city }}, {{ fair.state }}</p>
 
+            <p><a href="{% url 'sold_at_fair' fair.id %}">What sold at {{ fair.fair_name }}?</a></p>
+
         </div>
         <div class="column-12"><hr></div>
     {% endfor %}

@@ -117,3 +117,13 @@ def more_craft_fairs(request):
     return render(request, 'mmestore/more_craft_fairs.html', context)
 
 
+def sold_at_fair(request, fair_id):
+    fair = get_object_or_404(CraftFair, pk=fair_id)
+    craft_items = CraftItem.objects.filter(craft_fair_id=fair_id,
+                                           has_it_been_sold=True)\
+        .order_by('-item_number')
+    context = {
+        'fair': fair.__str__,
+        'items': craft_items,
+    }
+    return render(request, 'mmestore/sold_at_fair.html', context)
