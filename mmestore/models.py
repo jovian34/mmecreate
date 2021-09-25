@@ -48,12 +48,12 @@ class CraftItem(models.Model):
     price = models.FloatField(default=None, blank=True, null=True)
     shipping = models.FloatField(default=None, blank=True, null=True)
     has_it_been_sold = models.BooleanField(default=False)
+    craft_fair = models.ForeignKey(CraftFair, null=True, on_delete=models.CASCADE)
     width = models.FloatField(default=None, blank=True, null=True)
     height = models.FloatField(default=None, blank=True, null=True)
     depth = models.FloatField(default=None, blank=True, null=True)
     dress_size = models.FloatField(default=None, blank=True, null=True)
     pay_code = models.CharField(default=None, blank=True, null=True,  max_length=10000)
-    craft_fair = models.ForeignKey(CraftFair, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.description
