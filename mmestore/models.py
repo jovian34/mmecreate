@@ -9,29 +9,6 @@ class Category(models.Model):
         return self.cat_name
 
 
-class CraftItem(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    item_number = models.CharField(unique=True, max_length=16)
-    description = models.CharField(default=None, blank=True, null=True, max_length=200)
-    photo_front = models.URLField(default=None, blank=True, null=True, max_length=200)
-    photo_front_width = models.IntegerField(default=None, blank=True, null=True)
-    photo_front_height = models.IntegerField(default=None, blank=True, null=True)
-    photo_back = models.URLField(default=None, blank=True, null=True, max_length=200)
-    photo_back_width = models.IntegerField(default=None, blank=True, null=True)
-    photo_back_height = models.IntegerField(default=None, blank=True, null=True)
-    price = models.FloatField(default=None, blank=True, null=True)
-    shipping = models.FloatField(default=None, blank=True, null=True)
-    has_it_been_sold = models.BooleanField(default=False)
-    width = models.FloatField(default=None, blank=True, null=True)
-    height = models.FloatField(default=None, blank=True, null=True)
-    depth = models.FloatField(default=None, blank=True, null=True)
-    dress_size = models.FloatField(default=None, blank=True, null=True)
-    pay_code = models.CharField(default=None, blank=True, null=True,  max_length=10000)
-
-    def __str__(self):
-        return self.description
-
-
 class CraftFair(models.Model):
     fair_name = models.CharField(max_length=200)
     fair_url = models.URLField(default=None, blank=True, null=True, max_length=200)
@@ -56,3 +33,28 @@ class CraftFair(models.Model):
 
     def __str__(self):
         return self.fair_name
+
+
+class CraftItem(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    item_number = models.CharField(unique=True, max_length=16)
+    description = models.CharField(default=None, blank=True, null=True, max_length=200)
+    photo_front = models.URLField(default=None, blank=True, null=True, max_length=200)
+    photo_front_width = models.IntegerField(default=None, blank=True, null=True)
+    photo_front_height = models.IntegerField(default=None, blank=True, null=True)
+    photo_back = models.URLField(default=None, blank=True, null=True, max_length=200)
+    photo_back_width = models.IntegerField(default=None, blank=True, null=True)
+    photo_back_height = models.IntegerField(default=None, blank=True, null=True)
+    price = models.FloatField(default=None, blank=True, null=True)
+    shipping = models.FloatField(default=None, blank=True, null=True)
+    has_it_been_sold = models.BooleanField(default=False)
+    width = models.FloatField(default=None, blank=True, null=True)
+    height = models.FloatField(default=None, blank=True, null=True)
+    depth = models.FloatField(default=None, blank=True, null=True)
+    dress_size = models.FloatField(default=None, blank=True, null=True)
+    pay_code = models.CharField(default=None, blank=True, null=True,  max_length=10000)
+    craft_fair = models.ForeignKey(CraftFair, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.description
+
