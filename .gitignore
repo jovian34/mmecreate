@@ -1,2 +1,7 @@
 /mmecreate/.env
-/venv396/
+/.venv310_1/
+.vscode/launch.json
+/mmecreate/__pycache__
+/mmestore/__pycache__
+/mmestore/migrations/__pycache__
+/mmestore/templatetags/__pycache__
