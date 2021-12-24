@@ -124,6 +124,10 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
+LOGIN_REDIRECT_URL = "home"
+
+LOGOUT_REDIRECT_URL = "home"
+
 if not bool(int(os.environ.get('DEVELOP'))):
     # added due to security warnings
     CSRF_COOKIE_SECURE = True

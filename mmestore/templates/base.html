@@ -28,5 +28,14 @@
     <hr>
     <p>Copyright &#169;2021 <a href="{% url 'index' %}">Mme's Creations LLC</a></p>
     <p>website maintained by <a href="https://www.jovian34.com">jovian34 LLC</a></p>
+    <hr>
+    {% if user.is_authenticated %}
+    <p>Welcome, {{ user.first_name}}.
+      You can <a href="{% url 'categories' %}">add items</a> 
+      or <a href="{% url 'logout' %}">logout</a>.</p>
+    {% else %}
+    <p><a href="{% url 'login' %}">Staff login</a></p>
+    {% endif %}
+    
 </footer>
 </html>

@@ -75,6 +75,10 @@ footer {
     background-color: #8cfffa;
 }
 
+.add-item a {
+    color: red;
+}
+
 @media only screen and (min-width: 1200px) {
 /*------------BANNER--------------*/
 #banner {

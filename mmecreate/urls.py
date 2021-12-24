@@ -24,6 +24,7 @@ admin_word = os.environ.get('ADMIN_WORD')
 urlpatterns = [
     path('', views.home, name='home'),
     path('mmestore/', include('mmestore.urls')),
+    path("accounts/", include("django.contrib.auth.urls")),
     path(f'{admin_word}/', admin.site.urls),
 ]
 

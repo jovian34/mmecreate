@@ -2,13 +2,13 @@ from django.shortcuts import get_object_or_404, render, redirect
 
 from datetime import datetime, timedelta
 from .models import Category, CraftItem, CraftFair
-from .forms import ItemNumberForm
+from .forms import ItemNumberForm, CategoryAddCraftItemForm
 from .get_fair_info import get_fair_info
+from .logic import get_next_craft_item_default
 
 
 def index(request):
-    # return render(request, 'mmestore/index.html')
-    return redirect('item_lookup') # for Artie FEST
+    return redirect('item_lookup')
 
 
 def categories(request):
@@ -127,3 +127,22 @@ def sold_at_fair(request, fair_id):
         'items': craft_items,
     }
     return render(request, 'mmestore/sold_at_fair.html', context)
+
+
+def category_add_craft_item(request, category_id):
+    category = Category.objects.get(pk=category_id)
+    if request.method == 'POST':
+        return redirect('item_lookup')
+    else:
+        id_default = get_next_craft_item_default(category_id)
+        form = CategoryAddCraftItemForm(initial={'item_num': id_default})
+        context = {
+            'form': form,
+            'category': category.cat_name,
+        }
+        return render(
+            request, 
+            'mmestore/category_add_craft_item.html', 
+            context
+        )
+    
