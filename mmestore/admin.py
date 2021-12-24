@@ -1,7 +1,12 @@
 from django.contrib import admin
+from django.db import models
 from .models import Category, CraftItem, CraftFair
 
-admin.site.register(Category)
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    model = Category
+    list_display = ('cat_name', 'cat_code')
 
 
 @admin.register(CraftItem)
