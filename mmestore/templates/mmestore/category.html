@@ -4,6 +4,9 @@
 
 {% block full-content %}
 <h1>Category: {{ category_name }}</h1>
+{{ {% if request.user.is_staff %}
+    <h2><a href="{% url 'categories' %}">Add more {{ category_name }}</a></h2>
+{% endif %}}}
 
     {% if items %}
 
