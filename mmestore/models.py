@@ -3,7 +3,8 @@ from datetime import datetime
 
 
 class Category(models.Model):
-    cat_name = models.CharField(max_length=200)
+    cat_name = models.CharField(unique=True,max_length=200)
+    cat_code = models.CharField(max_length=1, null=True, blank=False)
 
     def __str__(self):
         return self.cat_name
