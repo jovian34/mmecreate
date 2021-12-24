@@ -4,8 +4,8 @@
 
 {% block full-content %}
 <h1>Category: {{ category_name }}</h1>
-{% if request.user.is_staff %}
-    <h2><a href="{% url 'categories' %}">Add more {{ category_name }}</a></h2>
+{% if user.is_authenticated %}
+    <h2><a href="{% url 'category_add_craft_item' category_id %}">Add more {{ category_name }}</a></h2>
 {% endif %}
 
     {% if items %}
@@ -30,6 +30,10 @@
 
 
         {% endfor %}
+
+    {% if user.is_authenticated %}
+        <h2><a href="{% url 'category_add_craft_item' category_id %}">Add more {{ category_name }}</a></h2>
+    {% endif %}
 
     {%  else %}
         <h3>No {{ category_name.lower }} items are currently listed in the database.</h3>

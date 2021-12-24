@@ -26,6 +26,7 @@ def category(request, category_id):
         .order_by('-item_number')
     context = {
         'category_name': category_item.cat_name,
+        'category_id': category_id,
         'items': craft_items,
     }
     return render(request, 'mmestore/category.html', context)
