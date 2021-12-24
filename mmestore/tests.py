@@ -7,11 +7,14 @@ from .models import CraftItem, Category, CraftFair
 
 class CraftItemViewTests(TestCase):
     def setUp(self):
-        self.c1 = Category.objects.create(cat_name='table runner')
+        self.c1 = Category.objects.create(cat_name='table runner',
+                                          cat_code="2")
         self.c1.save()
-        self.c2 = Category.objects.create(cat_name='hand bag')
+        self.c2 = Category.objects.create(cat_name='hand bag',
+                                          cat_code="A")
         self.c2.save()
-        self.c3 = Category.objects.create(cat_name='pocket wallet')
+        self.c3 = Category.objects.create(cat_name='pocket wallet',
+                                          cat_code="0")
         self.c3.save()
 
         self.i1 = CraftItem.objects.create(category=self.c3,
@@ -190,3 +193,19 @@ class CraftItemViewTests(TestCase):
         cat_num = self.c1.pk
         item = CraftItem.objects.get(item_number='0001')
         self.assertEqual(item.category.id, cat_num)
+
+    def test_category_add_craft_item_view(self):
+        category_add_craft_item_client = Client()
+        response = category_add_craft_item_client.post(
+            '/mmestore/category_add_craft_item/3/',
+            {
+                "item_number": "0215",
+                "description": "Bright red large",
+                "price": "39.99",
+                "shipping": "6",
+                "width": "5",
+            }
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(CraftItem.objects.last().description, "Bright red large")
+        self.assertEqual(CraftItem.objects.last().price, 39.99)

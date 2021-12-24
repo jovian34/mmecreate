@@ -133,10 +133,24 @@ def sold_at_fair(request, fair_id):
 def category_add_craft_item(request, category_id):
     category = Category.objects.get(pk=category_id)
     if request.method == 'POST':
+        form = CategoryAddCraftItemForm(request.POST)
+        if form.is_valid():
+            add_item = CraftItem(
+                category = category,
+                item_number = form.cleaned_data['item_number'],
+                description = form.cleaned_data['description'],
+                price = form.cleaned_data['price'],
+                shipping = form.cleaned_data['shipping'],
+                width = form.cleaned_data['width'],
+                height = form.cleaned_data['height'],
+                depth = form.cleaned_data['depth'],
+                dress_size = form.cleaned_data['dress_size'],
+            )
+            add_item.save()
         return redirect('item_lookup')
     else:
         id_default = get_next_craft_item_default(category_id)
-        form = CategoryAddCraftItemForm(initial={'item_num': id_default})
+        form = CategoryAddCraftItemForm(initial={'item_number': id_default})
         context = {
             'form': form,
             'category': category.cat_name,
