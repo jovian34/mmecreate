@@ -27,7 +27,7 @@ else:
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
-project_version = '0.3.1'
+project_version = '0.3.2'
 os.environ.setdefault('PROJECT_VERSION', project_version)
 
 # Application definition
