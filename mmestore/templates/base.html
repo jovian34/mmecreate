@@ -1,10 +1,12 @@
 {% load static %}
+{% load cache_bust %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'mmestore/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'mmestore/style.css' %}?{% cache_bust %}">
     <link href="https://fonts.googleapis.com/css2?family=Catamaran&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="{% static 'mmestore/icon.ico' %}"/>
   </head>
