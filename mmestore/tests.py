@@ -195,11 +195,12 @@ class CraftItemViewTests(TestCase):
         self.assertEqual(item.category.id, cat_num)
 
     def test_category_add_craft_item_view(self):
+        cat_num = self.c2.pk
         category_add_craft_item_client = Client()
         response = category_add_craft_item_client.post(
-            '/mmestore/category_add_craft_item/3/',
+            f'/mmestore/category_add_craft_item/{cat_num}/',
             {
-                "item_number": "0215",
+                "item_number": "A215",
                 "description": "Bright red large",
                 "price": "39.99",
                 "shipping": "6",
