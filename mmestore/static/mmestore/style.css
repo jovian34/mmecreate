@@ -31,7 +31,7 @@ img.col12 {
     float: left;
     width: 100%;
     padding: .5em 2%;
-    clear-after: both;
+    break-after: both;
 
 }
 
@@ -42,22 +42,22 @@ body    {
 }
 
 #content {
-    background-color: lightgrey;
+    background-color: mistyrose;
     padding: .5em 2%;
 }
 
 #cat_item {
     border: 2px solid #999999;
-    background-color: lightgrey;
+    background-color: #ffe0f0 
 }
 
 
 a {
-    color: deeppink;
+    color: #fd6c9e; /*---French Pink---*/
 }
 
 #sold_out {
-    color: deeppink;
+    color: #fd6c9e; /*---French Pink---*/
 }
 
 footer {
@@ -68,15 +68,16 @@ footer {
 }
 
 #spacer {
-    background-color: #8cfffa;
+    background-color: #dea5a4; /*---Pastel Pink---*/
 }
 
 #in-progress {
-    background-color: #8cfffa;
+    background-color: #fba0e3; /*---Lavender Rose---*/
 }
 
 .add-item a {
-    color: green;
+    color: maroon;
+    text-decoration: none;
 }
 
 input {
@@ -90,7 +91,7 @@ input {
 
 input[type=button], input[type=submit], input[type=reset] {
     width: 33%;
-    background-color: #4CAF50;
+    background-color: deeppink;
     border: none;
     color: white;
     padding: 16px 32px;
@@ -100,19 +101,17 @@ input[type=button], input[type=submit], input[type=reset] {
   }
 
 input:focus {
-    background-color: lightblue;
+    background-color: #fc0fc0; /*---Shocking Pink---*/
   }
 
 @media only screen and (min-width: 1200px) {
 /*------------BANNER--------------*/
-#banner {
 
-}
 
     .column-6 {
         float: left;
         width: 50%;
-        clear-after: none;
+        break-after: none;
     }
 
     #cat_item {
@@ -127,7 +126,7 @@ input:focus {
     #fair_pic {
         width: 40%;
         float: right;
-        clear-after: both;
+        break-after: both;
 
     }
 }
