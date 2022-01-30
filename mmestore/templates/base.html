@@ -1,5 +1,6 @@
 {% load static %}
 {% load cache_bust %}
+{% load this_year %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +30,7 @@
 
 <footer>
     <hr>
-    <p>Copyright &#169;2021 <a href="{% url 'index' %}">Mme's Creations LLC</a></p>
+    <p>Copyright &#169;{% this_year %} <a href="{% url 'index' %}">Mme's Creations LLC</a></p>
     <p>website maintained by <a href="https://www.jovian34.com">jovian34 LLC</a></p>
     <hr>
     {% if user.is_authenticated %}
