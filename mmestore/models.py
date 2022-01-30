@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 class Category(models.Model):
-    cat_name = models.CharField(unique=True,max_length=200)
+    cat_name = models.CharField(unique=True, max_length=200)
     cat_code = models.CharField(max_length=1, null=True, blank=False)
 
     def __str__(self):
@@ -15,7 +15,7 @@ class CraftFair(models.Model):
     fair_url = models.URLField(default=None, blank=True, null=True, max_length=200)
     address = models.CharField(default=None, blank=True, null=True, max_length=200)
     city = models.CharField(default=None, blank=True, null=True, max_length=200)
-    state = models.CharField(default='IN', blank=True, null=True, max_length=200)
+    state = models.CharField(default="IN", blank=True, null=True, max_length=200)
     zip = models.CharField(default=None, blank=True, null=True, max_length=20)
     first_start_time = models.DateTimeField(default=datetime.now)
     first_end_time = models.DateTimeField(default=datetime.now)
@@ -27,13 +27,13 @@ class CraftFair(models.Model):
         default="https://live.staticflickr.com/7893/31652682857_186874f73f_w.jpg",
         blank=True,
         null=True,
-        max_length=200
+        max_length=200,
     )
     photo_fair_width = models.IntegerField(default=400, blank=True, null=True)
     photo_fair_height = models.IntegerField(default=300, blank=True, null=True)
 
     def __str__(self):
-        return f'{self.fair_name} {self.first_start_time.year}'
+        return f"{self.fair_name} {self.first_start_time.year}"
 
 
 class CraftItem(models.Model):
@@ -49,13 +49,14 @@ class CraftItem(models.Model):
     price = models.FloatField(default=None, blank=True, null=True)
     shipping = models.FloatField(default=None, blank=True, null=True)
     has_it_been_sold = models.BooleanField(default=False)
-    craft_fair = models.ForeignKey(CraftFair, blank=True, null=True, on_delete=models.CASCADE)
+    craft_fair = models.ForeignKey(
+        CraftFair, blank=True, null=True, on_delete=models.CASCADE
+    )
     width = models.FloatField(default=None, blank=True, null=True)
     height = models.FloatField(default=None, blank=True, null=True)
     depth = models.FloatField(default=None, blank=True, null=True)
     dress_size = models.FloatField(default=None, blank=True, null=True)
-    pay_code = models.CharField(default=None, blank=True, null=True,  max_length=10000)
+    pay_code = models.CharField(default=None, blank=True, null=True, max_length=10000)
 
     def __str__(self):
         return self.description
-

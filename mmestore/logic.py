@@ -1,5 +1,6 @@
 from .models import Category, CraftItem
 
+
 def get_next_craft_item_default(category_id):
     category = Category.objects.get(pk=category_id)
     cat_code = category.cat_code
@@ -9,4 +10,3 @@ def get_next_craft_item_default(category_id):
         test_value = f"{cat_code}{i:03d}"
         if test_value not in id_list:
             return test_value
-
