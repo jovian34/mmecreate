@@ -159,3 +159,4 @@ def category_add_craft_item(request, category_id):
             "category": category.cat_name,
         }
         return render(request, "mmestore/category_add_craft_item.html", context)
+

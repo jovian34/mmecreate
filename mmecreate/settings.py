@@ -21,13 +21,37 @@ DEBUG = bool(int(os.environ.get('DEVELOP')))
 if not bool(int(os.environ.get('DEVELOP'))):
     ALLOWED_HOSTS = ['mmescreations.com', 'www.mmescreations.com',
                      '167.71.188.32', ]
+    
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mmestore',
+        'USER': 'mmestore',
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': '167.71.104.42',
+        'PORT': '5432',
+        }
+    }
+
 else:
     ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mmestore_dev',
+        'USER': 'mmestore',
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': '167.71.104.42',
+        'PORT': '5432',
+        }
+    }
+
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
-project_version = '0.3.3'
+project_version = '0.4.1'
 os.environ.setdefault('PROJECT_VERSION', project_version)
 
 # Application definition
@@ -73,24 +97,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mmecreate.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mmestore',
-        'USER': 'mmestore',
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': '167.71.104.42',
-        'PORT': '5432',
-    }
-}
-
-
-# Password validation
-# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
