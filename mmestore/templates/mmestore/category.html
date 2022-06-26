@@ -4,9 +4,8 @@
 
 {% block full-content %}
 <h1>Category: {{ category_name }}</h1>
-{% if user.is_authenticated %}
-    <h2><a href="{% url 'category_add_craft_item' category_id %}">Add more {{ category_name }}</a></h2>
-{% endif %}
+
+{% include "mmestore/partials/part_inline_add_item_cat.html" %}
 
     {% if items %}
 
