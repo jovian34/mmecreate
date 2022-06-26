@@ -6,16 +6,16 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mmestore', '0007_craftitem_dress_size'),
+        ("mmestore", "0007_craftitem_dress_size"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='category',
-            name='item_range_max',
+            model_name="category",
+            name="item_range_max",
         ),
         migrations.RemoveField(
-            model_name='category',
-            name='item_range_min',
+            model_name="category",
+            name="item_range_min",
         ),
     ]

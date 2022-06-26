@@ -7,13 +7,18 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mmestore', '0022_remove_craftitem_craft_fair'),
+        ("mmestore", "0022_remove_craftitem_craft_fair"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='craftitem',
-            name='craft_fair',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='mmestore.craftfair'),
+            model_name="craftitem",
+            name="craft_fair",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="mmestore.craftfair",
+            ),
         ),
     ]

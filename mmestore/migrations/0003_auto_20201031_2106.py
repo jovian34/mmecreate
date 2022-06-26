@@ -6,28 +6,28 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mmestore', '0002_remove_craftitem_length'),
+        ("mmestore", "0002_remove_craftitem_length"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='craftitem',
-            name='photo_back_height',
+            model_name="craftitem",
+            name="photo_back_height",
             field=models.IntegerField(null=True),
         ),
         migrations.AddField(
-            model_name='craftitem',
-            name='photo_back_width',
+            model_name="craftitem",
+            name="photo_back_width",
             field=models.IntegerField(null=True),
         ),
         migrations.AddField(
-            model_name='craftitem',
-            name='photo_front_height',
+            model_name="craftitem",
+            name="photo_front_height",
             field=models.IntegerField(null=True),
         ),
         migrations.AddField(
-            model_name='craftitem',
-            name='photo_front_width',
+            model_name="craftitem",
+            name="photo_front_width",
             field=models.IntegerField(null=True),
         ),
     ]

@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mmestore', '0023_craftitem_craft_fair'),
+        ("mmestore", "0023_craftitem_craft_fair"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='category',
-            name='cat_code',
+            model_name="category",
+            name="cat_code",
             field=models.CharField(max_length=1, null=True),
         ),
         migrations.AlterField(
-            model_name='category',
-            name='cat_name',
+            model_name="category",
+            name="cat_name",
             field=models.CharField(max_length=200, unique=True),
         ),
     ]

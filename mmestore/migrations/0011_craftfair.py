@@ -6,31 +6,84 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mmestore', '0010_auto_20210627_1231'),
+        ("mmestore", "0010_auto_20210627_1231"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='CraftFair',
+            name="CraftFair",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('fair_name', models.CharField(max_length=200)),
-                ('address', models.CharField(blank=True, default=None, max_length=200, null=True)),
-                ('city', models.CharField(blank=True, default=None, max_length=200, null=True)),
-                ('state', models.CharField(blank=True, default='IN', max_length=200, null=True)),
-                ('zip', models.CharField(blank=True, default=None, max_length=20, null=True)),
-                ('start_date', models.DateField(verbose_name='day the fair starts')),
-                ('first_start_time', models.DateTimeField(default=None)),
-                ('first_end_time', models.DateTimeField(default=None)),
-                ('second_date', models.DateField(blank=True, default=None, null=True)),
-                ('second_start_time', models.DateTimeField(blank=True, default=None, null=True)),
-                ('second_end_time', models.DateTimeField(blank=True, default=None, null=True)),
-                ('third_date', models.DateField(blank=True, default=None, null=True)),
-                ('third_start_time', models.DateTimeField(blank=True, default=None, null=True)),
-                ('third_end_time', models.DateTimeField(blank=True, default=None, null=True)),
-                ('photo_fair', models.URLField(blank=True, default='https://www.flickr.com/photos/jovian34/31652682857/in/album-72157719574898957/', null=True)),
-                ('photo_fair_width', models.IntegerField(blank=True, default=400, null=True)),
-                ('photo_fair_height', models.IntegerField(blank=True, default=300, null=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("fair_name", models.CharField(max_length=200)),
+                (
+                    "address",
+                    models.CharField(
+                        blank=True, default=None, max_length=200, null=True
+                    ),
+                ),
+                (
+                    "city",
+                    models.CharField(
+                        blank=True, default=None, max_length=200, null=True
+                    ),
+                ),
+                (
+                    "state",
+                    models.CharField(
+                        blank=True, default="IN", max_length=200, null=True
+                    ),
+                ),
+                (
+                    "zip",
+                    models.CharField(
+                        blank=True, default=None, max_length=20, null=True
+                    ),
+                ),
+                ("start_date", models.DateField(verbose_name="day the fair starts")),
+                ("first_start_time", models.DateTimeField(default=None)),
+                ("first_end_time", models.DateTimeField(default=None)),
+                ("second_date", models.DateField(blank=True, default=None, null=True)),
+                (
+                    "second_start_time",
+                    models.DateTimeField(blank=True, default=None, null=True),
+                ),
+                (
+                    "second_end_time",
+                    models.DateTimeField(blank=True, default=None, null=True),
+                ),
+                ("third_date", models.DateField(blank=True, default=None, null=True)),
+                (
+                    "third_start_time",
+                    models.DateTimeField(blank=True, default=None, null=True),
+                ),
+                (
+                    "third_end_time",
+                    models.DateTimeField(blank=True, default=None, null=True),
+                ),
+                (
+                    "photo_fair",
+                    models.URLField(
+                        blank=True,
+                        default="https://www.flickr.com/photos/jovian34/31652682857/in/album-72157719574898957/",
+                        null=True,
+                    ),
+                ),
+                (
+                    "photo_fair_width",
+                    models.IntegerField(blank=True, default=400, null=True),
+                ),
+                (
+                    "photo_fair_height",
+                    models.IntegerField(blank=True, default=300, null=True),
+                ),
             ],
         ),
     ]

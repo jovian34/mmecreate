@@ -7,18 +7,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mmestore', '0015_auto_20210805_2111'),
+        ("mmestore", "0015_auto_20210805_2111"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='craftfair',
-            name='first_end_time',
+            model_name="craftfair",
+            name="first_end_time",
             field=models.DateTimeField(default=datetime.datetime.now),
         ),
         migrations.AlterField(
-            model_name='craftfair',
-            name='first_start_time',
+            model_name="craftfair",
+            name="first_start_time",
             field=models.DateTimeField(default=datetime.datetime.now),
         ),
     ]

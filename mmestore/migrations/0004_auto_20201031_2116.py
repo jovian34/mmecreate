@@ -6,23 +6,23 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mmestore', '0003_auto_20201031_2106'),
+        ("mmestore", "0003_auto_20201031_2106"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='craftitem',
-            name='depth',
+            model_name="craftitem",
+            name="depth",
             field=models.FloatField(null=True),
         ),
         migrations.AlterField(
-            model_name='craftitem',
-            name='height',
+            model_name="craftitem",
+            name="height",
             field=models.FloatField(null=True),
         ),
         migrations.AlterField(
-            model_name='craftitem',
-            name='width',
+            model_name="craftitem",
+            name="width",
             field=models.FloatField(null=True),
         ),
     ]

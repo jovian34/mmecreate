@@ -8,34 +8,55 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('cat_name', models.CharField(max_length=200)),
-                ('item_range_min', models.IntegerField()),
-                ('item_range_max', models.IntegerField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("cat_name", models.CharField(max_length=200)),
+                ("item_range_min", models.IntegerField()),
+                ("item_range_max", models.IntegerField()),
             ],
         ),
         migrations.CreateModel(
-            name='CraftItem',
+            name="CraftItem",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('description', models.CharField(max_length=200)),
-                ('photo_front', models.URLField()),
-                ('photo_back', models.URLField()),
-                ('price', models.FloatField()),
-                ('has_it_been_sold', models.BooleanField()),
-                ('item_number', models.IntegerField(unique=True)),
-                ('length', models.FloatField()),
-                ('width', models.FloatField()),
-                ('height', models.FloatField()),
-                ('depth', models.FloatField()),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='mmestore.category')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("description", models.CharField(max_length=200)),
+                ("photo_front", models.URLField()),
+                ("photo_back", models.URLField()),
+                ("price", models.FloatField()),
+                ("has_it_been_sold", models.BooleanField()),
+                ("item_number", models.IntegerField(unique=True)),
+                ("length", models.FloatField()),
+                ("width", models.FloatField()),
+                ("height", models.FloatField()),
+                ("depth", models.FloatField()),
+                (
+                    "category",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="mmestore.category",
+                    ),
+                ),
             ],
         ),
     ]

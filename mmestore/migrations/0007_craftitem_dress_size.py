@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mmestore', '0006_auto_20201031_2332'),
+        ("mmestore", "0006_auto_20201031_2332"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='craftitem',
-            name='dress_size',
+            model_name="craftitem",
+            name="dress_size",
             field=models.FloatField(blank=True, default=None, null=True),
         ),
     ]

@@ -6,18 +6,20 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mmestore', '0013_alter_craftitem_shipping'),
+        ("mmestore", "0013_alter_craftitem_shipping"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='craftitem',
-            name='pay_code',
-            field=models.CharField(blank=True, default=None, max_length=10000, null=True),
+            model_name="craftitem",
+            name="pay_code",
+            field=models.CharField(
+                blank=True, default=None, max_length=10000, null=True
+            ),
         ),
         migrations.AlterField(
-            model_name='craftitem',
-            name='shipping',
+            model_name="craftitem",
+            name="shipping",
             field=models.FloatField(blank=True, default=None, null=True),
         ),
     ]

@@ -6,68 +6,68 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mmestore', '0004_auto_20201031_2116'),
+        ("mmestore", "0004_auto_20201031_2116"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='craftitem',
-            name='depth',
+            model_name="craftitem",
+            name="depth",
             field=models.FloatField(blank=True, default=None, null=True),
         ),
         migrations.AlterField(
-            model_name='craftitem',
-            name='description',
+            model_name="craftitem",
+            name="description",
             field=models.CharField(blank=True, default=None, max_length=200, null=True),
         ),
         migrations.AlterField(
-            model_name='craftitem',
-            name='has_it_been_sold',
+            model_name="craftitem",
+            name="has_it_been_sold",
             field=models.BooleanField(default=False),
         ),
         migrations.AlterField(
-            model_name='craftitem',
-            name='height',
+            model_name="craftitem",
+            name="height",
             field=models.FloatField(blank=True, default=None, null=True),
         ),
         migrations.AlterField(
-            model_name='craftitem',
-            name='photo_back',
+            model_name="craftitem",
+            name="photo_back",
             field=models.URLField(blank=True, default=None, null=True),
         ),
         migrations.AlterField(
-            model_name='craftitem',
-            name='photo_back_height',
+            model_name="craftitem",
+            name="photo_back_height",
             field=models.IntegerField(blank=True, default=None, null=True),
         ),
         migrations.AlterField(
-            model_name='craftitem',
-            name='photo_back_width',
+            model_name="craftitem",
+            name="photo_back_width",
             field=models.IntegerField(blank=True, default=None, null=True),
         ),
         migrations.AlterField(
-            model_name='craftitem',
-            name='photo_front',
+            model_name="craftitem",
+            name="photo_front",
             field=models.URLField(blank=True, default=None, null=True),
         ),
         migrations.AlterField(
-            model_name='craftitem',
-            name='photo_front_height',
+            model_name="craftitem",
+            name="photo_front_height",
             field=models.IntegerField(blank=True, default=None, null=True),
         ),
         migrations.AlterField(
-            model_name='craftitem',
-            name='photo_front_width',
+            model_name="craftitem",
+            name="photo_front_width",
             field=models.IntegerField(blank=True, default=None, null=True),
         ),
         migrations.AlterField(
-            model_name='craftitem',
-            name='price',
+            model_name="craftitem",
+            name="price",
             field=models.FloatField(blank=True, default=None, null=True),
         ),
         migrations.AlterField(
-            model_name='craftitem',
-            name='width',
+            model_name="craftitem",
+            name="width",
             field=models.FloatField(blank=True, default=None, null=True),
         ),
     ]

@@ -6,13 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mmestore', '0016_auto_20210814_1246'),
+        ("mmestore", "0016_auto_20210814_1246"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='craftfair',
-            name='photo_fair',
-            field=models.URLField(blank=True, default='https://live.staticflickr.com/7893/31652682857_186874f73f_w.jpg', null=True),
+            model_name="craftfair",
+            name="photo_fair",
+            field=models.URLField(
+                blank=True,
+                default="https://live.staticflickr.com/7893/31652682857_186874f73f_w.jpg",
+                null=True,
+            ),
         ),
     ]
