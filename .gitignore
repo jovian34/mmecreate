@@ -1,5 +1,6 @@
 /mmecreate/.env
 /.venv310_1/
+/venv310/
 .vscode/launch.json
 /mmecreate/__pycache__
 /mmestore/__pycache__
