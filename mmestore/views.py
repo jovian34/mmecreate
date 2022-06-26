@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, render, redirect
+from django.views.generic import TemplateView, ListView, DetailView
 
 from datetime import datetime, timedelta
 from .models import Category, CraftItem, CraftFair
@@ -11,12 +12,10 @@ def index(request):
     return redirect("item_lookup")
 
 
-def categories(request):
-    category_list = Category.objects.order_by("cat_name")
-    context = {
-        "category_list": category_list,
-    }
-    return render(request, "mmestore/categories.html", context)
+class CategoriesListView(ListView):
+    model = Category
+    template_name = "mmestore/categories.html"
+    ordering = "cat_name"
 
 
 def category(request, category_id):
