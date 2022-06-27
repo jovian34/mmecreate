@@ -60,7 +60,7 @@ def craft_item_ship(request, item_number):
 
 
 def item_lookup(request):
-    
+
     if request.method == "POST":
         form = ItemNumberForm(request.POST)
         if form.is_valid():
@@ -68,7 +68,7 @@ def item_lookup(request):
             return redirect("craft_item_ship", item_number=item_num)
 
     else:
-        fair, fair_info = get_fair_details()        
+        fair, fair_info = get_fair_details()
         form = ItemNumberForm()
         context = {
             "fair": fair,

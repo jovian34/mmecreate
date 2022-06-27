@@ -4,6 +4,7 @@ from ..models import CraftFair
 
 current_time = datetime.now()
 
+
 def get_fair_status(fair_dict):
     output = {
         "number_of_days": 1,
@@ -27,7 +28,7 @@ def get_fair_status(fair_dict):
     return output
 
 
-def get_fair_details():    
+def get_fair_details():
     four_days_ago = current_time + timedelta(days=-4)
     fair_q = CraftFair.objects.exclude(first_start_time__lt=four_days_ago).order_by(
         "first_start_time"
