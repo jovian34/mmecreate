@@ -1,4 +1,4 @@
-from .models import Category, CraftItem
+from ..models import Category, CraftItem
 
 
 def get_next_craft_item_default(category_id):

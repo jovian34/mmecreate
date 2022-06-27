@@ -1,22 +1,20 @@
 from django.shortcuts import get_object_or_404, render, redirect
+from django.views.generic import TemplateView, ListView, DetailView
 
-from datetime import datetime, timedelta
 from .models import Category, CraftItem, CraftFair
 from .forms import ItemNumberForm, CategoryAddCraftItemForm
-from .get_fair_info import get_fair_info
-from .logic import get_next_craft_item_default
+from .viewlogic.fair_info import get_fair_details, sort_fairs
+from .viewlogic.next_craft_item_number import get_next_craft_item_default
 
 
 def index(request):
     return redirect("item_lookup")
 
 
-def categories(request):
-    category_list = Category.objects.order_by("cat_name")
-    context = {
-        "category_list": category_list,
-    }
-    return render(request, "mmestore/categories.html", context)
+class CategoriesListView(ListView):
+    model = Category
+    template_name = "mmestore/categories.html"
+    ordering = "cat_name"
 
 
 def category(request, category_id):
@@ -62,30 +60,15 @@ def craft_item_ship(request, item_number):
 
 
 def item_lookup(request):
-    current_time = datetime.now()
+    
     if request.method == "POST":
         form = ItemNumberForm(request.POST)
         if form.is_valid():
             item_num = form.cleaned_data["item_num"]
             return redirect("craft_item_ship", item_number=item_num)
+
     else:
-        four_days_ago = current_time + timedelta(days=-4)
-        fair_q = CraftFair.objects.exclude(first_start_time__lt=four_days_ago).order_by(
-            "first_start_time"
-        )
-        fair_dict = fair_q.values(
-            "id",
-            "first_start_time",
-            "first_end_time",
-            "second_end_time",
-            "third_end_time",
-        )
-        fair_info = get_fair_info(fair_dict[0], current_time)
-        if fair_info["end_time"] < current_time:
-            fair = fair_q[1]
-            fair_info = get_fair_info(fair_dict[1], current_time)
-        else:
-            fair = fair_q[0]
+        fair, fair_info = get_fair_details()        
         form = ItemNumberForm()
         context = {
             "fair": fair,
@@ -96,22 +79,7 @@ def item_lookup(request):
 
 
 def more_craft_fairs(request):
-    current_time = datetime.now()
-    fairs_future = CraftFair.objects.exclude(
-        first_start_time__lt=current_time
-    ).order_by("first_start_time")
-    fairs_past = CraftFair.objects.exclude(first_start_time__gt=current_time).order_by(
-        "-first_start_time"
-    )
-    last_fair_dict = fairs_past.values(
-        "id",
-        "first_start_time",
-        "first_end_time",
-        "second_end_time",
-        "third_end_time",
-    )
-    last_fair_info = get_fair_info(last_fair_dict[0], current_time)
-    fair_in_progress = last_fair_info["in_progress"]
+    fairs_future, fairs_past, fair_in_progress = sort_fairs()
     context = {
         "fairs_future": fairs_future,
         "fairs_past": fairs_past,
