@@ -1,11 +1,10 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import TemplateView, ListView, DetailView
 
-from datetime import datetime
 from .models import Category, CraftItem, CraftFair
 from .forms import ItemNumberForm, CategoryAddCraftItemForm
-from .viewlogic.get_fair_info import get_fair_status, get_fair_details
-from .viewlogic.get_next_craft_item_number import get_next_craft_item_default
+from .viewlogic.fair_info import get_fair_details, sort_fairs
+from .viewlogic.next_craft_item_number import get_next_craft_item_default
 
 
 def index(request):
@@ -80,22 +79,7 @@ def item_lookup(request):
 
 
 def more_craft_fairs(request):
-    current_time = datetime.now()
-    fairs_future = CraftFair.objects.exclude(
-        first_start_time__lt=current_time
-    ).order_by("first_start_time")
-    fairs_past = CraftFair.objects.exclude(first_start_time__gt=current_time).order_by(
-        "-first_start_time"
-    )
-    last_fair_dict = fairs_past.values(
-        "id",
-        "first_start_time",
-        "first_end_time",
-        "second_end_time",
-        "third_end_time",
-    )
-    last_fair_info = get_fair_status(last_fair_dict[0])
-    fair_in_progress = last_fair_info["in_progress"]
+    fairs_future, fairs_past, fair_in_progress = sort_fairs()
     context = {
         "fairs_future": fairs_future,
         "fairs_past": fairs_past,

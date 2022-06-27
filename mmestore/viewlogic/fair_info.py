@@ -46,3 +46,22 @@ def get_fair_details():
     else:
         fair = fair_q[0]
     return fair, fair_info
+
+
+def sort_fairs():
+    fairs_future = CraftFair.objects.exclude(
+        first_start_time__lt=current_time
+    ).order_by("first_start_time")
+    fairs_past = CraftFair.objects.exclude(first_start_time__gt=current_time).order_by(
+        "-first_start_time"
+    )
+    last_fair_dict = fairs_past.values(
+        "id",
+        "first_start_time",
+        "first_end_time",
+        "second_end_time",
+        "third_end_time",
+    )
+    last_fair_info = get_fair_status(last_fair_dict[0])
+    fair_in_progress = last_fair_info["in_progress"]
+    return fairs_future, fairs_past, fair_in_progress
