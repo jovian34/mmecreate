@@ -20,7 +20,7 @@ class CategoryAddCraftItemForm(forms.Form):
 
     def clean_item_number(self):
         data = self.cleaned_data["item_number"]
-        p = re.compile(f"[[A-Z0-9][0-9][0-9][0-9]$")
+        p = re.compile(f"[A-Z0-9][0-9][0-9][0-9]$")
         if not p.match(data):
             raise ValidationError(
                 ("Item number is not formatted correctly." "Please use default value."),

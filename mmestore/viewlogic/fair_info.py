@@ -2,9 +2,6 @@ from datetime import datetime, timedelta
 from ..models import CraftFair
 
 
-current_time = datetime.now()
-
-
 def get_fair_status(fair_dict):
     output = {
         "number_of_days": 1,
@@ -22,14 +19,14 @@ def get_fair_status(fair_dict):
     else:
         output["end_time"] = fair_dict["first_end_time"]
 
-    if output["start_time"] < current_time < output["end_time"]:
+    if output["start_time"] < datetime.now() < output["end_time"]:
         output["in_progress"] = True
 
     return output
 
 
 def get_fair_details():
-    four_days_ago = current_time + timedelta(days=-4)
+    four_days_ago = datetime.now() + timedelta(days=-4)
     fair_q = CraftFair.objects.exclude(first_start_time__lt=four_days_ago).order_by(
         "first_start_time"
     )
@@ -41,7 +38,7 @@ def get_fair_details():
         "third_end_time",
     )
     fair_info = get_fair_status(fair_dict[0])
-    if fair_info["end_time"] < current_time:
+    if fair_info["end_time"] < datetime.now():
         fair = fair_q[1]
         fair_info = get_fair_status(fair_dict[1])
     else:
@@ -51,9 +48,9 @@ def get_fair_details():
 
 def sort_fairs():
     fairs_future = CraftFair.objects.exclude(
-        first_start_time__lt=current_time
+        first_start_time__lt=datetime.now()
     ).order_by("first_start_time")
-    fairs_past = CraftFair.objects.exclude(first_start_time__gt=current_time).order_by(
+    fairs_past = CraftFair.objects.exclude(first_start_time__gt=datetime.now()).order_by(
         "-first_start_time"
     )
     last_fair_dict = fairs_past.values(
