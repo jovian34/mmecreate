@@ -42,7 +42,7 @@ else:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
-            "NAME": "mmestore_dev",
+            "NAME": "mmestore",
             "USER": "mmestore",
             "PASSWORD": os.environ.get("DB_PASSWORD"),
             "HOST": "167.71.104.42",
@@ -53,7 +53,7 @@ else:
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
-project_version = "0.4.2"
+project_version = "0.4.3"
 os.environ.setdefault("PROJECT_VERSION", project_version)
 
 # Application definition

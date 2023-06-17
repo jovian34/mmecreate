@@ -3,8 +3,10 @@
 /venv310/
 /venv/
 .vscode/launch.json
+/.vscode/
 /mmecreate/__pycache__
 /mmestore/__pycache__
 /mmestore/migrations/__pycache__
 /mmestore/templatetags/__pycache__
 /mmestore/viewlogic/__pycache__re
+/mmestore/viewlogic/__pycache__/
