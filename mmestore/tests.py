@@ -229,3 +229,27 @@ class CraftItemViewTests(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(CraftItem.objects.last().description, "Bright red large")
         self.assertEqual(CraftItem.objects.last().price, 39.99)
+
+    def test_za_lookup_renders_with_no_future_craft_fairs(self):
+        '''
+        the za in the name forces the test to run after the other tests 
+        due to it deleting f1 and f3 which are needed in prior tests
+        '''
+
+        self.f1.delete()
+        self.f3.delete()
+        item_lookup_page_client = Client()
+        response = item_lookup_page_client.get("/mmestore/item_lookup")
+        contain_text = "Shop by item number:"
+        non_contain_text = "More Craft Fairs"
+        self.assertContains(response, contain_text)
+        self.assertNotContains(response, non_contain_text)
+        self.assertIs(response.status_code, 200)
+
+    def test_zb_more_craft_fair_renders_with_no_future_craft_fairs(self):
+        '''
+        This runs after test_za_lookup_renders_with_no_future_craft_fairs
+        deleted all but the one past fair to show the page renders without
+        a future fair
+        '''
+        self.test_more_craft_fair_page_renders

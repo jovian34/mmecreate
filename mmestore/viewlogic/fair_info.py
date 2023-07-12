@@ -8,6 +8,7 @@ def get_fair_status(fair_dict):
         "start_time": fair_dict["first_start_time"],
         "end_time": None,
         "in_progress": False,
+        "future_none": False,
     }
 
     if fair_dict["third_end_time"]:
@@ -24,6 +25,19 @@ def get_fair_status(fair_dict):
 
     return output
 
+def create_unknown_future_fair():
+    '''
+    Deals with an edge case when there is no future fair
+    '''
+    output = {
+        "number_of_days": 1,
+        "start_time": datetime.now() + timedelta(days=365),
+        "end_time": None,
+        "in_progress": False,
+        "future_none": True,
+    }
+    return output
+
 
 def get_fair_details():
     four_days_ago = datetime.now() + timedelta(days=-4)
@@ -37,12 +51,23 @@ def get_fair_details():
         "second_end_time",
         "third_end_time",
     )
-    fair_info = get_fair_status(fair_dict[0])
+
+    try:
+        fair_info = get_fair_status(fair_dict[0])
+    except IndexError:
+        fair_info = create_unknown_future_fair()
+        fairs_past = CraftFair.objects.exclude(first_start_time__gt=datetime.now()).order_by(
+        "-first_start_time"
+        )
+        return fairs_past[0], fair_info
+
+    # case where fair is happening now show the next fair
     if fair_info["end_time"] < datetime.now():
         fair = fair_q[1]
         fair_info = get_fair_status(fair_dict[1])
     else:
         fair = fair_q[0]
+        
     return fair, fair_info
 
 
