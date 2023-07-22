@@ -45,7 +45,7 @@ else:
             "NAME": "mmestore",
             "USER": "mmestore",
             "PASSWORD": os.environ.get("DB_PASSWORD"),
-            "HOST": "167.71.104.42",
+            "HOST": "localhost",
             "PORT": "5432",
         }
     }
