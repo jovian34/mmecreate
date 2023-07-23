@@ -24,32 +24,25 @@ if not bool(int(os.environ.get("DEVELOP"))):
         "www.mmescreations.com",
         "167.71.188.32",
     ]
-
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": "mmestore",
-            "USER": "mmestore",
-            "PASSWORD": os.environ.get("DB_PASSWORD"),
-            "HOST": "167.71.104.42",
-            "PORT": "5432",
-        }
-    }
-
 else:
     ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": "mmestore",
-            "USER": "mmestore",
-            "PASSWORD": os.environ.get("DB_PASSWORD"),
-            "HOST": "localhost",
-            "PORT": "5432",
-        }
-    }
 
+if bool(int(os.environ.get("DEVELOP"))):
+    host_name = "localhost"
+else:
+    host_name = "cyllene.jovian34.com"
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "mmestore",
+        "USER": "mmestore",
+        "PASSWORD": os.environ.get("DB_PASSWORD"),
+        "HOST": host_name,
+        "PORT": "5432",
+    }
+}
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
