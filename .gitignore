@@ -1,7 +1,4 @@
 /mmecreate/.env
-/.venv310_1/
-/venv310/
-/venv/
 /.venv/
 .vscode/launch.json
 /.vscode/
