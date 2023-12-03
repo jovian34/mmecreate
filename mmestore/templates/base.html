@@ -36,7 +36,11 @@
     {% if user.is_authenticated %}
     <p>Welcome, {{ user.first_name}}.
       You can <a href="{% url 'categories' %}">add items</a> 
-      or <a href="{% url 'logout' %}">logout</a>.</p>
+      or</p>
+      <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Sign Out</button>
+      </form>
     {% else %}
     <p><a href="{% url 'login' %}">Staff login</a></p>
     {% endif %}
