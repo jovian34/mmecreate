@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import TemplateView, ListView, DetailView
+from django.contrib.auth.decorators import login_required
 
 from .models import Category, CraftItem, CraftFair
 from .forms import ItemNumberForm, CategoryAddCraftItemForm
@@ -100,7 +101,7 @@ def sold_at_fair(request, fair_id):
     }
     return render(request, "mmestore/sold_at_fair.html", context)
 
-
+@login_required
 def category_add_craft_item(request, category_id):
     category = Category.objects.get(pk=category_id)
     if request.method == "POST":
