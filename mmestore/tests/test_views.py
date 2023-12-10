@@ -100,7 +100,7 @@ def fairs(client):
         )
     return tipton, earth, iuk
         
- # TESTS ######################################################################
+# TESTS ######################################################################
 
 @pytest.mark.django_db
 def test_duplicate_item_raises_integrity_error(client, categories, craft_items):
@@ -122,7 +122,6 @@ def test_item_lookup_page_renders(client, categories, craft_items, fairs):
 def test_item_lookup_page_renders_fair(client, categories, craft_items, fairs):
     response = client.get("/mmestore/item_lookup")
     assert "IUK" in str(response.content)
-    assert response.status_code == 200
 
 @pytest.mark.django_db
 def test_more_craft_fair_page_renders(client, categories, craft_items, fairs):
@@ -134,7 +133,6 @@ def test_more_craft_fair_page_renders(client, categories, craft_items, fairs):
 def test_more_craft_fair_page_shows_today(client, categories, craft_items, fairs):
     response = client.get("/mmestore/more_craft_fairs")
     assert "Downtown" in str(response.content)
-    assert response.status_code == 200
 
 @pytest.mark.django_db
 def test_item_lookup_page_shows_fair_is_today(client, categories, craft_items, fairs):
@@ -241,7 +239,7 @@ def test_category_add_craft_item_view_not_logged_in(client, categories, craft_it
     assert 22.5 == CraftItem.objects.last().price
 
 @pytest.mark.django_db
-def test_item_lookup_page_renders_not_logged_in(client, categories, craft_items, fairs):
+def test_item_lookup_page_renders_login_button_not_logged_in(client, categories, craft_items, fairs):
     response = client.get("/mmestore/item_lookup")
     assert "Staff login" in str(response.content)
 
