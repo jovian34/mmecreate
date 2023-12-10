@@ -3,3 +3,4 @@
 .vscode/launch.json
 /.vscode/
 *.pyc
+/.pytest_cache
