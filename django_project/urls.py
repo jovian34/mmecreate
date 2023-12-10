@@ -13,6 +13,6 @@ urlpatterns = [
     path(f"{admin_word}/", admin.site.urls),
 ]
 
-admin.site.site_header = "Mme's Creations LLC"
-admin.site.site_title = "Mme's Store Inventory"
-admin.site.index_title = "Mme's Store Inventory"
+admin.site.site_header = "Mmes Creations LLC"
+admin.site.site_title = "Mmes Store Inventory"
+admin.site.index_title = "Mmes Store Inventory"
