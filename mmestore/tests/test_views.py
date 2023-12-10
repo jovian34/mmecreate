@@ -1,6 +1,8 @@
 import pytest
 
 from django.db.utils import IntegrityError
+from django.utils import timezone
+from datetime import timedelta
 
 from ..models import Category, CraftItem, CraftFair
 
@@ -57,6 +59,45 @@ def craft_items(client, categories):
             description="fancy pink table runner",
         )
     return i2001, i2002, i2003, i1001, i1002, i0001
+
+@pytest.fixture
+def fairs(client):
+    next_week = timezone.now() + timedelta(days=7)
+    next_week_end = next_week + timedelta(hours=8)
+    tipton = CraftFair.objects.create(
+            fair_name="Tipton Pork Festival",
+            fair_url="https:www.google.com",
+            address="Downtown",
+            city="Tipton",
+            state="IN",
+            first_start_time=next_week,
+            first_end_time=next_week_end,
+        )
+    
+    last_week = timezone.now() + timedelta(days=-7)
+    last_week_end = last_week + timedelta(hours=10)
+    earth = CraftFair.objects.create(
+            fair_name="Atlanta Earth Festival",
+            fair_url="https://www.visithamiltoncounty.com",
+            address="PO Box",
+            city="Atlanta",
+            state="IN",
+            first_start_time=last_week,
+            first_end_time=last_week_end,
+        )
+    
+    two_hours_ago = timezone.now() + timedelta(hours=-2)
+    two_hours_ago_end = two_hours_ago + timedelta(hours=5)
+    iuk = CraftFair.objects.create(
+            fair_name="IUK",
+            fair_url="https:www.iuk.edu",
+            address="2300 S Washington St",
+            city="Kokomo",
+            state="IN",
+            first_start_time=two_hours_ago,
+            first_end_time=two_hours_ago_end,
+        )
+    return tipton, earth, iuk
         
 
 @pytest.mark.django_db
@@ -67,4 +108,22 @@ def test_duplicate_item_raises_integrity_error(client, categories, craft_items):
                     item_number="0001",
                     description="fancy green table runner",
                 )
-    assert "duplicate key value violates unique constraint" in str(execinfo.value) 
+    assert "duplicate key value violates unique constraint" in str(execinfo.value)
+
+@pytest.mark.django_db
+def test_item_lookup_page_renders(client, categories, craft_items, fairs):
+    response = client.get("/mmestore/item_lookup")
+    assert "Shop by item number:" in str(response.content)
+    assert response.status_code == 200
+
+@pytest.mark.django_db
+def test_item_lookup_page_renders_fair(client, categories, craft_items, fairs):
+    response = client.get("/mmestore/item_lookup")
+    assert "IUK" in str(response.content)
+    assert response.status_code == 200
+
+@pytest.mark.django_db
+def test_more_craft_fair_page_renders(client, categories, craft_items, fairs):
+    response = client.get("/mmestore/more_craft_fairs")
+    assert "Earth" in str(response.content)
+    assert response.status_code == 200

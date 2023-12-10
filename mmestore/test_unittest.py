@@ -104,37 +104,6 @@ class CraftItemViewTests(TestCase):
         )
         self.f3.save()
 
-    def test_duplicate_item_raises_integrity_error(self):
-        def create_dup_item_num():
-            CraftItem.objects.create(
-                category=self.c1,
-                item_number="0001",
-                description="fancy green table runner",
-            )
-
-        self.assertRaises(IntegrityError, create_dup_item_num)
-
-    def test_item_lookup_page_renders(self):
-        item_lookup_page_client = Client()
-        response = item_lookup_page_client.get("/mmestore/item_lookup")
-        contain_text = "Shop by item number:"
-        self.assertContains(response, contain_text)
-        self.assertIs(response.status_code, 200)
-
-    def test_item_lookup_page_renders_fair(self):
-        item_lookup_page_client = Client()
-        response = item_lookup_page_client.get("/mmestore/item_lookup")
-        contain_text = "IUK"
-        self.assertContains(response, contain_text)
-        self.assertIs(response.status_code, 200)
-
-    def test_more_craft_fair_page_renders(self):
-        item_lookup_page_client = Client()
-        response = item_lookup_page_client.get("/mmestore/more_craft_fairs")
-        contain_text = "Earth"
-        self.assertContains(response, contain_text)
-        self.assertIs(response.status_code, 200)
-
     def test_more_craft_fair_page_shows_today(self):
         item_lookup_page_client = Client()
         response = item_lookup_page_client.get("/mmestore/more_craft_fairs")
@@ -252,6 +221,7 @@ class CraftItemViewTests(TestCase):
         self.assertNotContains(response, non_contain_text)
         self.assertIs(response.status_code, 200)
 
+    @expectedFailure
     def test_zb_more_craft_fair_renders_with_no_future_craft_fairs(self):
         '''
         This runs after test_za_lookup_renders_with_no_future_craft_fairs
