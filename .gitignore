@@ -1,4 +1,4 @@
-/mmecreate/.env
+/django_project/.env
 /.venv/
 .vscode/launch.json
 /.vscode/

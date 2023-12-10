@@ -42,13 +42,14 @@ DATABASES = {
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
-project_version = "0.4.3"
+project_version = "0.5.0"
 os.environ.setdefault("PROJECT_VERSION", project_version)
 
 # Application definition
 
 INSTALLED_APPS = [
     "mmestore.apps.MmestoreConfig",
+    "django_project.apps.DjangoProjectConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -67,12 +68,12 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "mmecreate.urls"
+ROOT_URLCONF = "django_project.urls"
 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],
+        "DIRS": [BASE_DIR / "django_project/templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -85,7 +86,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "mmecreate.wsgi.application"
+WSGI_APPLICATION = "django_project.wsgi.application"
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -141,4 +142,4 @@ if not bool(int(os.environ.get("DEVELOP"))):
 
     SESSION_COOKIE_SECURE = True
 
-    STATIC_ROOT = "/home/carl/mmecreate/mmestore/static/"
+    STATIC_ROOT = "/home/carl/mmecreate/django_project/static/"
