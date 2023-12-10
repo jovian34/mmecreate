@@ -23,4 +23,4 @@ class TestChrome(LiveServerTestCase):
         driver = start_chrome(headless=True)
         admin_path = f"{self.live_server_url}/{os.getenv('ADMIN_WORD')}/"
         driver.get(admin_path)
-        assert "Log in | Mme's Store Inventory" in driver.title
+        assert "Log in | Mmes Store Inventory" in driver.title

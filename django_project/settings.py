@@ -135,5 +135,5 @@ if not bool(int(os.environ.get("DEVELOP"))):
     STATIC_ROOT = "/home/carl/mmecreate/django_project/static/"
 
 
-project_version = "0.5.2"
+project_version = "0.5.3" # fixed cache_bust 2023-12-10
 os.environ.setdefault("PROJECT_VERSION", project_version)
