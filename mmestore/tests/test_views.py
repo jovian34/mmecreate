@@ -99,6 +99,7 @@ def fairs(client):
         )
     return tipton, earth, iuk
         
+ # TESTS ######################################################################
 
 @pytest.mark.django_db
 def test_duplicate_item_raises_integrity_error(client, categories, craft_items):
@@ -127,3 +128,38 @@ def test_more_craft_fair_page_renders(client, categories, craft_items, fairs):
     response = client.get("/mmestore/more_craft_fairs")
     assert "Earth" in str(response.content)
     assert response.status_code == 200
+
+@pytest.mark.django_db
+def test_more_craft_fair_page_shows_today(client, categories, craft_items, fairs):
+    response = client.get("/mmestore/more_craft_fairs")
+    assert "Downtown" in str(response.content)
+    assert response.status_code == 200
+
+@pytest.mark.django_db
+def test_item_lookup_page_shows_fair_is_today(client, categories, craft_items, fairs):
+    response = client.get("/mmestore/item_lookup")
+    assert "Today - Come see us:" in str(response.content)
+    assert response.status_code == 200
+
+@pytest.mark.django_db
+def test_categories_page_lists_items(client, categories, craft_items, fairs):
+    response = client.get("/mmestore/categories")
+    assert "pocket wallet" in str(response.content)
+    assert response.status_code == 200
+
+@pytest.mark.django_db
+def test_category_page_lists_items(client, categories, craft_items, fairs):
+    response = client.get(f"/mmestore/category/{categories[2].pk}/", follow=True)
+    assert response.status_code == 200
+    assert "fancy blue wallet" in str(response.content)
+    assert "fancy pink wallet" in str(response.content)
+    assert "fancy pink table runner" not in str(response.content)
+    assert len(response.context["items"]) == 3
+
+@pytest.mark.django_db
+def test_category_page_does_not_list_sold_items(client, categories, craft_items, fairs):
+    response = client.get(f"/mmestore/category/{categories[1].pk}/", follow=True)
+    assert response.status_code == 200
+    assert "fancy olive hand bag" not in str(response.content)
+    assert "fancy purple hand bag" in str(response.content)
+    assert len(response.context["items"]) == 1

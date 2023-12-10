@@ -104,52 +104,8 @@ class CraftItemViewTests(TestCase):
         )
         self.f3.save()
 
-    def test_more_craft_fair_page_shows_today(self):
-        item_lookup_page_client = Client()
-        response = item_lookup_page_client.get("/mmestore/more_craft_fairs")
-        contain_text = "IUK"
-        self.assertContains(response, contain_text)
-        self.assertIs(response.status_code, 200)
 
-    def test_item_lookup_page_shows_fair_is_today(self):
-        item_lookup_page_client = Client()
-        response = item_lookup_page_client.get("/mmestore/item_lookup")
-        contain_text = "Today - Come see us:"
-        self.assertContains(response, contain_text)
-        self.assertIs(response.status_code, 200)
-
-    def test_categories_page_lists_items(self):
-        categories_page_client = Client()
-        response = categories_page_client.get("/mmestore/categories")
-        self.assertEqual(response.status_code, 200)
-        contain_text = "pocket wallet"
-        self.assertContains(response, contain_text)
-
-    def test_category_page_lists_items(self):
-        cat_num = self.c3.pk
-        category_page_client = Client()
-        response = category_page_client.get(f"/mmestore/category/{cat_num}/")
-        self.assertEqual(response.status_code, 200)
-        contain_text = "fancy blue wallet"
-        self.assertContains(response, contain_text)
-        contain_text = "fancy pink wallet"
-        self.assertContains(response, contain_text)
-        contain_text = "fancy pink table runner"
-        self.assertNotContains(response, contain_text)
-        number_of_items = len(response.context["items"])
-        self.assertIs(number_of_items, 3)
-
-    def test_category_page_does_not_list_sold_items(self):
-        cat_num = self.c2.pk
-        category_page_sold_client = Client()
-        response = category_page_sold_client.get(f"/mmestore/category/{cat_num}/")
-        self.assertEqual(response.status_code, 200)
-        contain_text = "fancy olive hand bag"
-        self.assertNotContains(response, contain_text)
-        contain_text = "fancy purple hand bag"
-        self.assertContains(response, contain_text)
-        number_of_items = len(response.context["items"])
-        self.assertIs(number_of_items, 1)
+    # TESTS #################################################################
 
     def test_craft_item_page_item(self):
         craft_item_page_item_client = Client()
