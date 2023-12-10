@@ -42,7 +42,7 @@ DATABASES = {
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
-project_version = "0.5.0"
+project_version = "0.5.1"
 os.environ.setdefault("PROJECT_VERSION", project_version)
 
 # Application definition
@@ -142,4 +142,4 @@ if not bool(int(os.environ.get("DEVELOP"))):
 
     SESSION_COOKIE_SECURE = True
 
-    STATIC_ROOT = "/home/carl/mmecreate/django_project/static/"
+    STATIC_ROOT = "/home/carl/mmecreate/django_project/"
