@@ -132,8 +132,8 @@ if not bool(int(os.environ.get("DEVELOP"))):
 
     SESSION_COOKIE_SECURE = True
 
-    STATIC_ROOT = "/home/carl/mmecreate/django_project/static/"
+    STATIC_ROOT = os.path.join(BASE_DIR, 'django_project/static/')
 
 
-project_version = "0.5.3" # fixed cache_bust 2023-12-10
+project_version = "0.5.4" # changed static_root pointer 2023-12-10
 os.environ.setdefault("PROJECT_VERSION", project_version)
