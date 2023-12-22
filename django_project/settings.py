@@ -27,7 +27,8 @@ else:
 if bool(int(os.environ.get("DEVELOP"))):
     host_name = "localhost"
 else:
-    host_name = "cyllene.jovian34.com"
+    host_name = "localhost"
+    # host_name = "cyllene.jovian34.com"
 
 DATABASES = {
     "default": {
@@ -135,5 +136,5 @@ if not bool(int(os.environ.get("DEVELOP"))):
     STATIC_ROOT = os.path.join(BASE_DIR, 'django_project/static/')
 
 
-project_version = "0.5.4" # changed static_root pointer 2023-12-10
+project_version = "0.5.5" # switching to same server PSQL ATP 2023-12-24
 os.environ.setdefault("PROJECT_VERSION", project_version)
