@@ -136,5 +136,5 @@ if not bool(int(os.environ.get("DEVELOP"))):
     STATIC_ROOT = os.path.join(BASE_DIR, 'django_project/static/')
 
 
-project_version = "0.5.6" # BASE pointing to HTMX 2.0 CDN reqs upgraded ATP 2024-06-18
+project_version = "0.5.7" # removed one test that relied on Helium due to vulnerable dependency ATP 2024-07-06
 os.environ.setdefault("PROJECT_VERSION", project_version)
