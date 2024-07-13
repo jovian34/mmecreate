@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'user_visit',
 ]
 
 MIDDLEWARE = [
@@ -64,6 +65,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'user_visit.middleware.UserVisitMiddleware',
 ]
 
 ROOT_URLCONF = "django_project.urls"
@@ -136,5 +138,5 @@ if not bool(int(os.environ.get("DEVELOP"))):
     STATIC_ROOT = os.path.join(BASE_DIR, 'django_project/static/')
 
 
-project_version = "0.5.7" # removed one test that relied on Helium due to vulnerable dependency ATP 2024-07-06
+project_version = "0.5.8" # added user visit tracking ATP 2024-07-13
 os.environ.setdefault("PROJECT_VERSION", project_version)
