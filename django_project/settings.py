@@ -115,8 +115,6 @@ USE_TZ = False
 
 STATIC_URL = "/static/"
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'django_project/static/')
-
 LOGIN_REDIRECT_URL = "home"
 
 LOGOUT_REDIRECT_URL = "home"
@@ -134,9 +132,11 @@ if not bool(int(os.environ.get("DEVELOP"))):
     SECURE_HSTS_PRELOAD = True
 
     SESSION_COOKIE_SECURE = True
+    
+    STATIC_ROOT = os.path('/home/carl/static/')    
 
-    # STATIC_ROOT = os.path.join(BASE_DIR, 'django_project/static/')
-
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'django_project/static/')
 
 project_version = "0.5.9" # removed user visit tracking ATP 2024-07-13
 os.environ.setdefault("PROJECT_VERSION", project_version)
