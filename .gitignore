@@ -5,3 +5,4 @@
 *.pyc
 /.pytest_cache
 django_project/static/admin
+.coverage
