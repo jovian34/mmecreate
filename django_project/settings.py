@@ -138,5 +138,5 @@ if not bool(int(os.environ.get("DEVELOP"))):
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'django_project/static/')
 
-project_version = "2025.01.20.a" # upgrade dj to 5.1.5 ATP
+project_version = "2025.04.14.a" # upgrade dj to 5.2 ATP
 os.environ.setdefault("PROJECT_VERSION", project_version)
