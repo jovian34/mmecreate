@@ -102,6 +102,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_REDIRECT_URL = "home"
+
+LOGOUT_REDIRECT_URL = "home"
+
 
 LANGUAGE_CODE = "en-us"
 
@@ -115,28 +119,35 @@ USE_TZ = False
 
 STATIC_URL = "/static/"
 
-LOGIN_REDIRECT_URL = "home"
+CSRF_COOKIE_SECURE = True
 
-LOGOUT_REDIRECT_URL = "home"
+SECURE_HSTS_SECONDS = 9999
 
-if not bool(int(os.environ.get("DEVELOP"))):
-    # added due to security warnings
-    CSRF_COOKIE_SECURE = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
-    SECURE_HSTS_SECONDS = 9999
+SECURE_HSTS_PRELOAD = True
 
-    SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True   
 
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+STATIC_ROOT = os.path.join(BASE_DIR, 'django_project/static/')
 
-    SECURE_HSTS_PRELOAD = True
+if bool(int(os.environ.get("DEVELOP"))):
+    SECURE_SSL_REDIRECT = False
 
-    SESSION_COOKIE_SECURE = True
-    
-    STATIC_ROOT = Path('/var/www/html/static/')    
 
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'django_project/static/')
+def get_version():
+    file_path = BASE_DIR / "pyproject.toml"
+    try:
+        with file_path.open("r", encoding="utf-8") as file:
+            for line in file:
+                if line.strip().startswith("version ="):
+                    return line.split("=")[1].strip().strip('"')
+        return "Version not found"
+    except FileNotFoundError:
+        return "pyproject.toml not found"
+    except Exception as e:
+        return f"Error reading pyproject.toml: {e}"
 
-project_version = "2025.05.27.a" # upgrade dj to 5.2.1 ATP
+project_version = get_version()
 os.environ.setdefault("PROJECT_VERSION", project_version)
+print(f"Project version: {os.environ.get('PROJECT_VERSION')}")

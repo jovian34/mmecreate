@@ -1,0 +1,33 @@
+[project]
+name = "mmes_creations"
+version = "2025.07.04.a"
+requires-python = ">=3.13.5"
+dependencies = [
+    "asgiref==3.9.0",
+    "coverage==7.9.2",
+    "django==5.2.4",
+    "execnet==2.1.1",
+    "gunicorn==23.0.0",
+    "iniconfig==2.1.0",
+    "packaging==25.0",
+    "pluggy==1.6.0",
+    "psycopg==3.2.9",
+    "psycopg-binary==3.2.9",
+    "pytest==8.4.1",
+    "pytest-cov==6.2.1",
+    "pytest-django==4.11.1",
+    "pytest-xdist==3.8.0",
+    "python-dotenv==1.1.1",
+    "sqlparse==0.5.3",
+    "typing-extensions==4.14.0",
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+extend-exclude = ["tests"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "django_project.settings"
+python_files = "test_*.py"
