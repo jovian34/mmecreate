@@ -1,6 +1,6 @@
 [project]
 name = "mmes_creations"
-version = "2025.07.04.a"
+version = "2025.07.04.0805"
 requires-python = ">=3.13.5"
 dependencies = [
     "asgiref==3.9.0",

@@ -97,7 +97,7 @@ wheels = [
 
 [[package]]
 name = "mmes-creations"
-version = "2025.7.4a0"
+version = "2025.7.4.805"
 source = { virtual = "." }
 dependencies = [
     { name = "asgiref" },
