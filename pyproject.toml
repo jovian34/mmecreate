@@ -1,9 +1,9 @@
 [project]
 name = "mmes_creations"
-version = "2025.07.04.0805"
+version = "2025.07.13.1531"
 requires-python = ">=3.13.5"
 dependencies = [
-    "asgiref==3.9.0",
+    "asgiref==3.9.1",
     "coverage==7.9.2",
     "django==5.2.4",
     "execnet==2.1.1",
@@ -19,7 +19,7 @@ dependencies = [
     "pytest-xdist==3.8.0",
     "python-dotenv==1.1.1",
     "sqlparse==0.5.3",
-    "typing-extensions==4.14.0",
+    "typing-extensions==4.14.1",
 ]
 
 [tool.uv]
